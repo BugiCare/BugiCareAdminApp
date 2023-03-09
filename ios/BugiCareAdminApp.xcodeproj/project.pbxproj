@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* BugiCareUserAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BugiCareUserAppTests.m */; };
+		00E356F31AD99517003FC87E /* BugiCareAdminAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BugiCareAdminAppTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		52F0991A29B591BC004A2638 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 52F0991929B591BC004A2638 /* Fonts */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9F1D19ADAF6225E946D4000D /* libPods-BugiCareUserApp-BugiCareUserAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25225C9CA147F35BFA2821B7 /* libPods-BugiCareUserApp-BugiCareUserAppTests.a */; };
-		D3811673D84EF71E0E2ADA52 /* libPods-BugiCareUserApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3351F3BA0A17FF6A80B1277B /* libPods-BugiCareUserApp.a */; };
+		9F1D19ADAF6225E946D4000D /* libPods-BugiCareAdminApp-BugiCareAdminAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25225C9CA147F35BFA2821B7 /* libPods-BugiCareAdminApp-BugiCareAdminAppTests.a */; };
+		D3811673D84EF71E0E2ADA52 /* libPods-BugiCareAdminApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3351F3BA0A17FF6A80B1277B /* libPods-BugiCareAdminApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,28 +23,28 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = BugiCareUserApp;
+			remoteInfo = "BugiCareAdminApp";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* BugiCareUserAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BugiCareUserAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BugiCareAdminAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BugiCareAdminAppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* BugiCareUserAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BugiCareUserAppTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* BugiCareUserApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BugiCareUserApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BugiCareUserApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = BugiCareUserApp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BugiCareUserApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BugiCareUserApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BugiCareUserApp/main.m; sourceTree = "<group>"; };
-		25225C9CA147F35BFA2821B7 /* libPods-BugiCareUserApp-BugiCareUserAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BugiCareUserApp-BugiCareUserAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3351F3BA0A17FF6A80B1277B /* libPods-BugiCareUserApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BugiCareUserApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* BugiCareAdminAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BugiCareAdminAppTests.m"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* BugiCareAdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BugiCareAdminApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "BugiCareAdminApp/AppDelegate.h"; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "BugiCareAdminApp/AppDelegate.mm"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BugiCareAdminApp/Images.xcassets"; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "BugiCareAdminApp/Info.plist"; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "BugiCareAdminApp/main.m"; sourceTree = "<group>"; };
+		25225C9CA147F35BFA2821B7 /* libPods-BugiCareAdminApp-BugiCareAdminAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BugiCareAdminApp-BugiCareAdminAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3351F3BA0A17FF6A80B1277B /* libPods-BugiCareAdminApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BugiCareAdminApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0991929B591BC004A2638 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		5F02CC25180862386BFF6C4F /* Pods-BugiCareUserApp-BugiCareUserAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareUserApp-BugiCareUserAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BugiCareUserApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B0A74BFCCFCBE7997702A279 /* Pods-BugiCareUserApp-BugiCareUserAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareUserApp-BugiCareUserAppTests.release.xcconfig"; path = "Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		C85D3A98DC11498F7069F37C /* Pods-BugiCareUserApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareUserApp.debug.xcconfig"; path = "Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp.debug.xcconfig"; sourceTree = "<group>"; };
-		DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareUserApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareUserApp.release.xcconfig"; path = "Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp.release.xcconfig"; sourceTree = "<group>"; };
+		5F02CC25180862386BFF6C4F /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareAdminApp-BugiCareAdminAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "BugiCareAdminApp/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		B0A74BFCCFCBE7997702A279 /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareAdminApp-BugiCareAdminAppTests.release.xcconfig"; path = "Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		C85D3A98DC11498F7069F37C /* Pods-BugiCareAdminApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareAdminApp.debug.xcconfig"; path = "Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareAdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BugiCareAdminApp.release.xcconfig"; path = "Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F1D19ADAF6225E946D4000D /* libPods-BugiCareUserApp-BugiCareUserAppTests.a in Frameworks */,
+				9F1D19ADAF6225E946D4000D /* libPods-BugiCareAdminApp-BugiCareAdminAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,20 +61,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3811673D84EF71E0E2ADA52 /* libPods-BugiCareUserApp.a in Frameworks */,
+				D3811673D84EF71E0E2ADA52 /* libPods-BugiCareAdminApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* BugiCareUserAppTests */ = {
+		00E356EF1AD99517003FC87E /* BugiCareAdminAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* BugiCareUserAppTests.m */,
+				00E356F21AD99517003FC87E /* BugiCareAdminAppTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = BugiCareUserAppTests;
+			path = "BugiCareAdminAppTests";
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -85,7 +85,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* BugiCareUserApp */ = {
+		13B07FAE1A68108700A75B9A /* BugiCareAdminApp */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -95,15 +95,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = BugiCareUserApp;
+			name = "BugiCareAdminApp";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				3351F3BA0A17FF6A80B1277B /* libPods-BugiCareUserApp.a */,
-				25225C9CA147F35BFA2821B7 /* libPods-BugiCareUserApp-BugiCareUserAppTests.a */,
+				3351F3BA0A17FF6A80B1277B /* libPods-BugiCareAdminApp.a */,
+				25225C9CA147F35BFA2821B7 /* libPods-BugiCareAdminApp-BugiCareAdminAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,9 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				52F0991929B591BC004A2638 /* Fonts */,
-				13B07FAE1A68108700A75B9A /* BugiCareUserApp */,
+				13B07FAE1A68108700A75B9A /* BugiCareAdminApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* BugiCareUserAppTests */,
+				00E356EF1AD99517003FC87E /* BugiCareAdminAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -134,8 +134,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* BugiCareUserApp.app */,
-				00E356EE1AD99517003FC87E /* BugiCareUserAppTests.xctest */,
+				13B07F961A680F5B00A75B9A /* BugiCareAdminApp.app */,
+				00E356EE1AD99517003FC87E /* BugiCareAdminAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,10 +143,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C85D3A98DC11498F7069F37C /* Pods-BugiCareUserApp.debug.xcconfig */,
-				DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareUserApp.release.xcconfig */,
-				5F02CC25180862386BFF6C4F /* Pods-BugiCareUserApp-BugiCareUserAppTests.debug.xcconfig */,
-				B0A74BFCCFCBE7997702A279 /* Pods-BugiCareUserApp-BugiCareUserAppTests.release.xcconfig */,
+				C85D3A98DC11498F7069F37C /* Pods-BugiCareAdminApp.debug.xcconfig */,
+				DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareAdminApp.release.xcconfig */,
+				5F02CC25180862386BFF6C4F /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.debug.xcconfig */,
+				B0A74BFCCFCBE7997702A279 /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -154,9 +154,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* BugiCareUserAppTests */ = {
+		00E356ED1AD99517003FC87E /* BugiCareAdminAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BugiCareUserAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BugiCareAdminAppTests" */;
 			buildPhases = (
 				A598BA50CB8FF8A3290F8A74 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -170,14 +170,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = BugiCareUserAppTests;
-			productName = BugiCareUserAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* BugiCareUserAppTests.xctest */;
+			name = "BugiCareAdminAppTests";
+			productname = "BugiCareAdminAppTests";
+			productReference = 00E356EE1AD99517003FC87E /* BugiCareAdminAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* BugiCareUserApp */ = {
+		13B07F861A680F5B00A75B9A /* BugiCareAdminApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BugiCareUserApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BugiCareAdminApp" */;
 			buildPhases = (
 				C8196474150C921EBA3259CF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -192,9 +192,9 @@
 			);
 			dependencies = (
 			);
-			name = BugiCareUserApp;
-			productName = BugiCareUserApp;
-			productReference = 13B07F961A680F5B00A75B9A /* BugiCareUserApp.app */;
+			name = "BugiCareAdminApp";
+			productName = "BugiCareAdminApp";
+			productReference = 13B07F961A680F5B00A75B9A /* BugiCareAdminApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -214,7 +214,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BugiCareUserApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BugiCareAdminApp" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -227,8 +227,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* BugiCareUserApp */,
-				00E356ED1AD99517003FC87E /* BugiCareUserAppTests */,
+				13B07F861A680F5B00A75B9A /* BugiCareAdminApp */,
+				00E356ED1AD99517003FC87E /* BugiCareAdminAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,15 +274,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D70E8918461A489D941CA89 /* [CP] Copy Pods Resources */ = {
@@ -291,15 +291,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp/Pods-BugiCareUserApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp/Pods-BugiCareAdminApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A598BA50CB8FF8A3290F8A74 /* [CP] Check Pods Manifest.lock */ = {
@@ -317,7 +317,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BugiCareUserApp-BugiCareUserAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BugiCareAdminApp-BugiCareAdminAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -330,15 +330,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BDE461D7FF28F16ABDE13CA6 /* [CP] Embed Pods Frameworks */ = {
@@ -347,15 +347,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareUserApp-BugiCareUserAppTests/Pods-BugiCareUserApp-BugiCareUserAppTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BugiCareAdminApp-BugiCareAdminAppTests/Pods-BugiCareAdminApp-BugiCareAdminAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8196474150C921EBA3259CF /* [CP] Check Pods Manifest.lock */ = {
@@ -373,7 +373,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BugiCareUserApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BugiCareAdminApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -406,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* BugiCareUserAppTests.m in Sources */,
+				00E356F31AD99517003FC87E /* BugiCareAdminAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +424,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* BugiCareUserApp */;
+			target = 13B07F861A680F5B00A75B9A /* BugiCareAdminApp */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -432,14 +432,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F02CC25180862386BFF6C4F /* Pods-BugiCareUserApp-BugiCareUserAppTests.debug.xcconfig */;
+			baseConfigurationReference = 5F02CC25180862386BFF6C4F /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BugiCareUserAppTests/Info.plist;
+				INFOPLIST_FILE = "BugiCareAdminAppTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -453,17 +453,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BugiCareUserApp.app/BugiCareUserApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BugiCareAdminApp.app/BugiCareAdminApp";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0A74BFCCFCBE7997702A279 /* Pods-BugiCareUserApp-BugiCareUserAppTests.release.xcconfig */;
+			baseConfigurationReference = B0A74BFCCFCBE7997702A279 /* Pods-BugiCareAdminApp-BugiCareAdminAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = BugiCareUserAppTests/Info.plist;
+				INFOPLIST_FILE = "BugiCareAdminAppTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,19 +477,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BugiCareUserApp.app/BugiCareUserApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BugiCareAdminApp.app/BugiCareAdminApp";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C85D3A98DC11498F7069F37C /* Pods-BugiCareUserApp.debug.xcconfig */;
+			baseConfigurationReference = C85D3A98DC11498F7069F37C /* Pods-BugiCareAdminApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = BugiCareUserApp/Info.plist;
+				INFOPLIST_FILE = "BugiCareAdminApp/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "BugiCareAdminApp";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -500,7 +501,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = BugiCareUserApp;
+				PRODUCT_NAME = "BugiCareAdminApp";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -509,12 +510,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareUserApp.release.xcconfig */;
+			baseConfigurationReference = DEFF0FAE47658CB9D0E9C52B /* Pods-BugiCareAdminApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = BugiCareUserApp/Info.plist;
+				INFOPLIST_FILE = "BugiCareAdminApp/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "BugiCareAdminApp";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,7 +527,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = BugiCareUserApp;
+				PRODUCT_NAME = "BugiCareAdminApp";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -669,7 +671,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BugiCareUserAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BugiCareAdminAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -678,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BugiCareUserApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BugiCareAdminApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -687,7 +689,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BugiCareUserApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BugiCareAdminApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
