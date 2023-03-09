@@ -103,7 +103,7 @@ const HomeScreen = ({navigation, route}: any) => {
           }}
         />
         <MainButton
-          text={'건강백서'}
+          text={'어르신관리'}
           types={images.bookIcon}
           onPress={() => navigation.navigate('건강백서')}
         />
