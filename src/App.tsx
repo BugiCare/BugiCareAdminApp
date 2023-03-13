@@ -28,20 +28,25 @@ import {
 
 import styled from 'styled-components/native';
 import IconButton from './components/IconButton';
-import MainButton, {SmallButton} from './components/MainButton';
+import MainButton, {
+  SmallButton,
+  TopButton,
+  UserList,
+} from './components/MainButton';
 import {images} from './image';
 import PillAlarm from './components/PillAlarm';
 
 interface PropsType {
   width: number;
 }
-type DataType = {
+interface DataTypes {
   id: string;
   name: string;
-  content: string;
-  price: number;
-  count: number;
-};
+  address: string;
+  age: number;
+  phoneNum: number;
+}
+
 const FullView = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
@@ -84,6 +89,23 @@ export const WhiteBackGround = styled.View`
   border-radius: 30px;
 `;
 const HomeScreen = ({navigation, route}: any) => {
+  const [myInfo, setMyInfo] = useState<DataTypes[]>([
+    {id: '1', name: '김용남', address: '98세', age: 193, phoneNum: 1},
+  ]);
+  const getInfo = () => {
+    axios
+      .get(
+        'https://raw.githubusercontent.com/BugiCare/BugiCareUserApp/master/src/data.json',
+      ) // 여기에 아마 서버 주소??
+      .then(json => {
+        const infoData = json.data;
+        setMyInfo(infoData);
+      });
+  };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
   return (
     <MainView>
       <Navbar>
@@ -94,26 +116,20 @@ const HomeScreen = ({navigation, route}: any) => {
           <LogoImage source={images.menuIcon} width={30} resizeMode="contain" />
         </MenuIcon>
       </Navbar>
-      <WhiteBackGround>
-        <MainButton
-          text={'내 정보'}
-          types={images.myInfoIcon}
-          onPress={() => {
-            navigation.navigate('내 정보');
-          }}
-        />
-        <MainButton
-          text={'어르신관리'}
-          types={images.bookIcon}
-          onPress={() => navigation.navigate('건강백서')}
-        />
-        <MainButton text={'건강체크'} types={images.heartIcon} />
 
-        <MainButton
-          text={'투약알람'}
-          types={images.pillIcon}
-          onPress={() => navigation.navigate('투약 알람')}
-        />
+      <WhiteBackGround style={{paddingBottom: 20}}>
+        <TopButton colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
+        {myInfo.map((user,i) => {
+          return (
+            <UserList
+          types={images.myInfoIcon}
+          text={user.name}
+          onPress={() => {
+            navigation.navigate('상세 정보',{user});
+          }}></UserList>
+          )
+        })}
+       
       </WhiteBackGround>
     </MainView>
   );
@@ -138,20 +154,12 @@ const App = () => {
                 headerShown: false,
               }}
             />
-            <Stack.Screen name="내 정보" component={ProfileScreen} />
+            <Stack.Screen name="상세 정보" component={ProfileScreen} />
             <Stack.Screen name="투약 알람" component={AlarmScreen} />
-            <Stack.Screen name='건강백서' component ={HealthViewScreen}/>
+            <Stack.Screen name="건강백서" component={HealthViewScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </MainView>
-
-      <EmergencyView>
-        <SmallButton
-          colorTheme={'#F1B6B6'}
-          text={'긴급 전화'}
-          types={images.phoneIcon}
-        />
-      </EmergencyView>
 
       <Navbar>
         <IconButton types={images.homeIcon} width={18} />
