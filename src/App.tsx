@@ -156,7 +156,7 @@ const App = () => {
             />
             <Stack.Screen name="상세 정보" component={ProfileScreen} />
             <Stack.Screen name="투약 알람" component={AlarmScreen} />
-            <Stack.Screen name="건강백서" component={HealthViewScreen} />
+            <Stack.Screen name="분석결과" component={HealthViewScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </MainView>
