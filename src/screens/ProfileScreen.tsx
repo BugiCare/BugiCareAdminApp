@@ -82,9 +82,6 @@ const ProfileScreen = ({navigation, route}: any) => {
   return (
 
     <MainView>
-      
-        
-      
       <WhiteBackGround style={{height: 450}}>
         <TopButton colorTheme="#9ec9ff" text="상세 정보" />
         <View style={{flex: 0.7, flexDirection: 'row'}}>
