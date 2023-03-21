@@ -2,7 +2,9 @@ import React from 'react';
 import {Dimensions, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 
-export const LineGraph = () => {
+export const LineGraph = ({ period, content }: any) => {
+    
+    
   return (
     <View>
       <LineChart
@@ -13,7 +15,7 @@ export const LineGraph = () => {
               data: [2, 5, 4, 5, 6, 7, 3],
             },
           ],
-          legend: ['일주일'],
+          legend: [period],
         }}
         width={Dimensions.get('window').width * 0.9} // from react-native
         height={220}

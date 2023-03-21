@@ -1,6 +1,6 @@
 import {LogoImage, MainView, WhiteBackGround} from '../App';
 import React from 'react';
-import { LineGraph } from '../components/LineGraph';
+
 import {SmallButton, TopButton} from '../components/MainButton';
 import {
   Image,
@@ -14,7 +14,8 @@ import {
 import {images} from '../image';
 import styled from 'styled-components/native';
 import {useState} from 'react';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
+import { GraphContainer } from '../components/GraphContainer';
 
 
 interface healthDataType {
@@ -52,9 +53,9 @@ const Container = styled.SafeAreaView`
   flex-grow: 2;
 `;
 var lineGraph :any= {
-    'act': <LineGraph />, // scrollView 안에 차트들 있는 형식으로 해야함
-    'door': <LineGraph />,
-    'refri': <LineGraph/>,
+    'act': <GraphContainer content={'act'} />, // scrollView 안에 차트들 있는 형식으로 해야함
+    'door': <GraphContainer content={'door'} />,
+    'refri': <GraphContainer content={'refri'} />,
     
 } // state 상태에 따라 다른 컴포넌트 렌더링
 
