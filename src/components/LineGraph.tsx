@@ -1,18 +1,58 @@
 import React from 'react';
-import {Dimensions, View} from 'react-native';
+import { useEffect } from 'react';
+import {useState} from 'react';
+import {Dimensions, Text, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
+import { TopButton } from './MainButton';
 
-export const LineGraph = ({ period, content }: any) => {
-    
-    
+export const LineGraph = ({period, content,analyzeData}:any) => {
+  
+  const [label, setLabels] = useState<string[]>([]);
+  
+  const labelData = {
+    시간: [
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10',
+      '11',
+      '12',
+      '13',
+      '14',
+      '15',
+      '16',
+      '17',
+      '18',
+      '19',
+      '20',
+      '21',
+      '22',
+      '23',
+    ],
+    하루: ['일', '월', '화', '수', '목', '금', '토'],
+    주: ['1주', '2주', '3주', '4주'],
+  };
+  type LabelPeriod = keyof typeof labelData;
+  const setLabel = (period: LabelPeriod) => {
+    setLabels(labelData[period]);
+  };
+    useEffect(()=>{setLabel(period)},[period])
   return (
     <View>
+      
       <LineChart
         data={{
-          labels: ['일', '월', '화', '수', '목', '금', '토'],
+          labels: label,
           datasets: [
             {
-              data: [2, 5, 4, 5, 6, 7, 3],
+              data: analyzeData,
             },
           ],
           legend: [period],
@@ -26,7 +66,7 @@ export const LineGraph = ({ period, content }: any) => {
           backgroundGradientFrom: '#FFFFFF',
           backgroundGradientTo: '#FFFFFF',
           barPercentage: 0.5,
-          decimalPlaces: 2, // optional, defaults to 2dp
+          decimalPlaces: 0, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(0,0,161,${opacity})`,
           labelColor: (opacity = 1) => `rgba(0,0,161, ${opacity})`,
           style: {
@@ -38,11 +78,13 @@ export const LineGraph = ({ period, content }: any) => {
             stroke: '#9ec9ff',
           },
         }}
-        style={{
+              style={{
+           right:20,
           marginVertical: 10,
           borderRadius: 16,
         }}
-      />
+          />
+           
     </View>
   );
 };

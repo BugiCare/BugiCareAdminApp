@@ -155,7 +155,7 @@ const App = () => {
               }}
             />
             <Stack.Screen name="상세 정보" component={ProfileScreen} />
-            <Stack.Screen name="투약 알람" component={AlarmScreen} />
+            <Stack.Screen name="실시간 영상" component={AlarmScreen} />
             <Stack.Screen name="분석결과" component={HealthViewScreen} />
           </Stack.Navigator>
         </NavigationContainer>

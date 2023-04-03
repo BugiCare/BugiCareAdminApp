@@ -70,7 +70,7 @@ const ProfileScreen = ({navigation, route}: any) => {
 
 
   const getProfileImage = () => {
-    axios.get('http://127.0.0.1:5001/image2').then(json => {
+    axios.get('http://3.37.143.141:5000/image2').then(json => {
       const img = json.data;
       
       setProfileImg(`data:image/png;base64,${img.img}`);
@@ -110,20 +110,23 @@ const ProfileScreen = ({navigation, route}: any) => {
       </WhiteBackGround>
       <SmallButton
         colorTheme={'#F1B6B6'}
-        text={'전화 걸기'}
-        types={images.phoneIcon}
+        text={'실시간 영상'}
+        types={images.myInfoIcon}
+        onPress={() => {
+          navigation.navigate('실시간 영상');
+        }}
       />
       <SmallButton
         colorTheme={'#F1B6B6'}
         text={'분석 결과 보기'}
-        types={images.phoneIcon}
+        types={images.settingIcon}
         onPress={() => {
           navigation.navigate('분석결과'); // 어디든 만들어만 놓으면 댐
         }}
       />
       <SmallButton
         colorTheme={'#F1B6B6'}
-        text={'집안 영상 보기'}
+        text={'긴급 전화'}
         types={images.phoneIcon}
       />
       

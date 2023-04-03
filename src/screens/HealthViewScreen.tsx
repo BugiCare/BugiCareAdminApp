@@ -1,7 +1,7 @@
 import {LogoImage, MainView, WhiteBackGround} from '../App';
 import React from 'react';
 
-import {SmallButton, TopButton} from '../components/MainButton';
+import MainButton, {SmallButton, TopButton} from '../components/MainButton';
 import {
   Image,
   FlatList,
@@ -14,9 +14,10 @@ import {
 import {images} from '../image';
 import styled from 'styled-components/native';
 import {useState} from 'react';
-import { useEffect } from 'react';
-import { GraphContainer } from '../components/GraphContainer';
-
+import {useEffect} from 'react';
+import {GraphContainer} from '../components/GraphContainer';
+import axios from 'axios';
+import { NavItem } from 'react-bootstrap';
 
 interface healthDataType {
   id: number;
@@ -46,21 +47,32 @@ const SelectBarText = styled.Text`
   font-size: 18px;
   font-family: BMJUA;
 `;
-const HealthScrollView = styled.FlatList`
-  flex: 1;
-`;
+
 const Container = styled.SafeAreaView`
   flex-grow: 2;
 `;
-var lineGraph :any= {
-    'act': <GraphContainer content={'act'} />, // scrollView 안에 차트들 있는 형식으로 해야함
-    'door': <GraphContainer content={'door'} />,
-    'refri': <GraphContainer content={'refri'} />,
-    
-} // state 상태에 따라 다른 컴포넌트 렌더링
+var lineGraph: any = {
+  활동시간: <GraphContainer content={'활동시간'} />, // scrollView 안에 차트들 있는 형식으로 해야함
+  문열림: <GraphContainer content={'문열림'} />,
+  냉장고열림: <GraphContainer content={'냉장고열림'} />,
+}; // state 상태에 따라 다른 컴포넌트 렌더링
 
 const HealthViewScreen = () => {
-  const [selectedInfo, setSelectedInfo] = useState('act');
+  const [selectedInfo, setSelectedInfo] = useState('활동시간');
+  const [springData, setSpringData] = useState('');
+
+  const getProfileImage = () => {
+    axios
+      .get('https://15.164.7.163')
+      .then(json => {
+        console.log(json.data);
+      })
+      .catch(error => console.log(error))
+      .then(() => console.log('it works'));
+  };
+  useEffect(() => {
+    getProfileImage();
+  });
 
   const renderItem = ({item}: any) => {
     return (
@@ -74,31 +86,43 @@ const HealthViewScreen = () => {
     <MainView>
       <WhiteBackGround style={{height: 550}}>
         <TopButton colorTheme={'#9ec9ff'} text={'행동 분석'} />
-        <SelectBarView>
-          <SelectBar
-            theme={selectedInfo=='act'?'#d2c9ff':'#9ec9ff'}
+              <SelectBarView>
+                  {['활동시간','문열림','냉장고열림'].map((item, i):any => {
+                      return (
+                        <SelectBar
+                        theme={selectedInfo == item ? '#d2c9ff' : '#9ec9ff'}
+                        onPress={() => {
+                          setSelectedInfo(item);
+                        }}>
+                              <SelectBarText>{ item}</SelectBarText>
+                      </SelectBar>
+                      )
+                  })}
+          {/* <SelectBar
+            theme={selectedInfo == 'act' ? '#d2c9ff' : '#9ec9ff'}
             onPress={() => {
               setSelectedInfo('act');
             }}>
             <SelectBarText>활동시간</SelectBarText>
           </SelectBar>
           <SelectBar
-            theme={selectedInfo=='door'?'#d2c9ff':'#9ec9ff'}
+            theme={selectedInfo == 'door' ? '#d2c9ff' : '#9ec9ff'}
             onPress={() => {
               setSelectedInfo('door');
             }}>
             <SelectBarText>문 열림</SelectBarText>
           </SelectBar>
           <SelectBar
-            theme={selectedInfo=='refri'?'#d2c9ff':'#9ec9ff'}
+            theme={selectedInfo == 'refri' ? '#d2c9ff' : '#9ec9ff'}
             onPress={() => {
               setSelectedInfo('refri');
             }}>
             <SelectBarText>냉장고 열림</SelectBarText>
-          </SelectBar>
+          </SelectBar> */}
         </SelectBarView>
         {/* <HealthScrollView data ={healthData} renderItem={renderItem}/> */}
         {lineGraph[selectedInfo]}
+        
       </WhiteBackGround>
     </MainView>
   );

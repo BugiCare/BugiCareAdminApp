@@ -28,11 +28,11 @@ const UserContainer = styled(Button)`
   align-items: center;
 `;
 
-const MainButtonBG = styled(Button)<ButtonTheme>`
+export const MainButtonBG = styled(Button)<ButtonTheme>`
   flex: ${props => props.flex};
   flex-direction: row;
   align-items: center;
-
+  
   position: relative;
   margin: auto;
   margin-top: 10px;
@@ -42,11 +42,11 @@ const MainButtonBG = styled(Button)<ButtonTheme>`
   background: ${props => props.theme};
   border-radius: 100px;
 `;
-const ButtonText = styled.Text<ButtonTextType>`
+export const ButtonText = styled.Text<ButtonTextType>`
   font-weight: ${props => props.fontWeight};
   font-size: ${props => props.fontSize}px;
   font-family: 'BMJUA';
-
+text-align:center;
   margin: auto;
   color: #040202;
 `;

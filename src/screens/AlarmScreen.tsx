@@ -6,6 +6,7 @@ import {Button, ScrollView, TextInput} from 'react-native';
 import styled from 'styled-components/native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 const AlarmContainer = styled.ScrollView`
   height: 100px;
@@ -34,7 +35,8 @@ const AlarmScreen = () => {
   const [alarmID, setAlarmID] = useState(0);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [alarmTime, setAlarmTime] = useState(new Date());
-  const [alarmInfo, setAlarmInfo] = useState<AlarmTypes[]>([])
+  const [alarmInfo, setAlarmInfo] = useState<AlarmTypes[]>([]);
+  const [postTitle,setPostTitle] = useState('')
   
   useEffect(()=>{console.log(alarmInfo)},[alarmInfo])
 
@@ -76,41 +78,41 @@ const AlarmScreen = () => {
   //   };
 
   const addAlarmTime = () => {
-    
-    showDatePicker();
-    setAlarmID(alarmID+1);
+    setPostTitle(title)
+    console.log(postTitle)
+   
   };
 
+  const getProfileImage = () => {
+    axios
+      .post('https://15.164.7.163',{data:postTitle})
+      .then(json => {
+        console.log(json.data);
+      })
+      .catch(error => console.log(error))
+      .then(() => console.log('it works'));
+  };
+  useEffect(() => {
+    getProfileImage();
+  },[postTitle]);
+
   const addAlarmTitle = () => {
+
     showTextInput();
 
   };
   return (
     <MainView>
       <WhiteBackGround>
-        <TopButton colorTheme={'#9ec9ff'} text={'투약 알람'}></TopButton>
+        <TopButton colorTheme={'#9ec9ff'} text={'실시간 영상'}></TopButton>
         <AlarmContainer>
-          <DateTimePickerModal
-            date={alarmTime}
-            isVisible={isDatePickerVisible}
-            mode="time"
-            onChange={date => {
-              setAlarmTime(date);
-            }}
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-          />
-          {alarmInfo.map((item,id) => {
-            return <Alarm key={item.id } alarmTime={alarmInfo[id].time} title={alarmInfo[id].title}></Alarm>;
-          })}
-          <Button title="알람 추가+" onPress={addAlarmTitle} />
-                  {isTextInputVisible?<AlarmTextInput
-                      value={title}
-                      onChangeText={text => setTitle(text)}
-                      returnKeyType="next"
-                      onSubmitEditing={addAlarmTime}
-                      
-                  />:null}
+          <AlarmTextInput
+          value={title}
+          onChangeText={text => setTitle(text)}
+            returnKeyType="next"
+            autoCorrect
+            onSubmitEditing={addAlarmTime}>
+          </AlarmTextInput>
         </AlarmContainer>
       </WhiteBackGround>
     </MainView>
