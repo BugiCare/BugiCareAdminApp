@@ -7,6 +7,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import AlarmScreen from './screens/AlarmScreen';
 import HealthViewScreen from './screens/HealthViewScreen';
 
+
 import {
   Button,
   SafeAreaView,
@@ -17,6 +18,7 @@ import {
   TouchableOpacity,
   useColorScheme,
   View,
+  Linking
 } from 'react-native';
 import {
   Colors,
@@ -89,9 +91,7 @@ export const WhiteBackGround = styled.View`
   border-radius: 30px;
 `;
 const HomeScreen = ({navigation, route}: any) => {
-  const [myInfo, setMyInfo] = useState<DataTypes[]>([
-    {id: '1', name: '김용남', address: '98세', age: 193, phoneNum: 1},
-  ]);
+  const [myInfo, setMyInfo] = useState<DataTypes[]>([]);
   const getInfo = () => {
     axios
       .get(
@@ -119,17 +119,16 @@ const HomeScreen = ({navigation, route}: any) => {
 
       <WhiteBackGround style={{paddingBottom: 20}}>
         <TopButton colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
-        {myInfo.map((user,i) => {
+        {myInfo.map((user, i) => {
           return (
             <UserList
-          types={images.myInfoIcon}
-          text={user.name}
-          onPress={() => {
-            navigation.navigate('상세 정보',{user});
-          }}></UserList>
-          )
+              types={images.myInfoIcon}
+              text={user.name}
+              onPress={() => {
+                navigation.navigate('상세 정보', {user});
+              }}></UserList>
+          );
         })}
-       
       </WhiteBackGround>
     </MainView>
   );

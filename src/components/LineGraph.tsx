@@ -1,14 +1,13 @@
 import React from 'react';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import {useState} from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
-import { TopButton } from './MainButton';
+import {TopButton} from './MainButton';
 
-export const LineGraph = ({period, content,analyzeData}:any) => {
-  
+export const LineGraph = ({period, content, analyzeData}: any) => {
   const [label, setLabels] = useState<string[]>([]);
-  
+
   const labelData = {
     시간: [
       '0',
@@ -43,10 +42,12 @@ export const LineGraph = ({period, content,analyzeData}:any) => {
   const setLabel = (period: LabelPeriod) => {
     setLabels(labelData[period]);
   };
-    useEffect(()=>{setLabel(period)},[period])
+  useEffect(() => {
+    setLabel(period);
+    
+  }, []);
   return (
     <View>
-      
       <LineChart
         data={{
           labels: label,
@@ -65,8 +66,8 @@ export const LineGraph = ({period, content,analyzeData}:any) => {
           backgroundColor: '#9ec9ff',
           backgroundGradientFrom: '#FFFFFF',
           backgroundGradientTo: '#FFFFFF',
-          barPercentage: 0.5,
-          decimalPlaces: 0, // optional, defaults to 2dp
+          barPercentage: 0.1,
+          decimalPlaces: 2, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(0,0,161,${opacity})`,
           labelColor: (opacity = 1) => `rgba(0,0,161, ${opacity})`,
           style: {
@@ -78,13 +79,12 @@ export const LineGraph = ({period, content,analyzeData}:any) => {
             stroke: '#9ec9ff',
           },
         }}
-              style={{
-           right:20,
+        style={{
+          right: 20,
           marginVertical: 10,
           borderRadius: 16,
         }}
-          />
-           
+      />
     </View>
   );
 };

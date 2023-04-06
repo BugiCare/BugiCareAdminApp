@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Text, View, Alert, Linking} from 'react-native';
 import styled from 'styled-components/native';
 import MainButton, {SmallButton, TopButton} from '../components/MainButton';
 import {images} from '../image';
@@ -61,26 +61,27 @@ const ProfileScreen = ({navigation, route}: any) => {
   const [num, setNum] = useState(0);
   const [profileImg, setProfileImg] = useState('');
   const [selectedInfo, setSelectedInfo] = useState('#93ddff');
-  const [user,setUserInfo] = useState(route.params.user)
+  const [user, setUserInfo] = useState(route.params.user);
 
   const nextNum = () => {
     setNum(num + 1);
     console.log(num);
   };
 
-
   const getProfileImage = () => {
-    axios.get('http://3.37.143.141:5000/image2').then(json => {
+    axios.get('http://3.36.218.186:5000/image2').then(json => {
       const img = json.data;
-      
+
       setProfileImg(`data:image/png;base64,${img.img}`);
     });
   };
   useEffect(() => {
     getProfileImage();
+    // setTimeout(() => {
+    //   Alert.alert('hi');
+    // }, 2000);
   }, []);
   return (
-
     <MainView>
       <WhiteBackGround style={{height: 450}}>
         <TopButton colorTheme="#9ec9ff" text="상세 정보" />
@@ -128,8 +129,8 @@ const ProfileScreen = ({navigation, route}: any) => {
         colorTheme={'#F1B6B6'}
         text={'긴급 전화'}
         types={images.phoneIcon}
+        onPress={() => Linking.openURL(`tel:010-7292-6684`)}
       />
-      
     </MainView>
   );
 };
