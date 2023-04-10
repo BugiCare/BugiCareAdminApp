@@ -45,10 +45,7 @@ export const GraphContainer = (props: {
       [4, 3, 2, 1],
     ],
     냉장고열림: [
-      [
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20, 21, 22, 23,
-      ],
+      [1, 2, 3, 4, 5, 6],
 
       [5, 8, 1, 9, 2, 4, 5],
 
@@ -58,45 +55,44 @@ export const GraphContainer = (props: {
   const [analyzeData, setAnalyzeData] = useState(analyzedData);
 
   const recentData = () => {
-    axios
-      .get('http://15.164.7.163:8080/countWeekOrMonth/week/refrigerator')
-      .then(json => {
-        const temp = analyzedData;
-        const numberData = json.data.map((str: string) => parseInt(str));
-        temp.냉장고열림[1] = numberData;
-        console.log(json.data);
-        setAnalyzeData(temp);
-      });
+    axios.get('http://15.164.7.163:8080/count/day/refrigerator').then(json => {
+      const temp = analyzedData;
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData;
+      temp.냉장고열림[0] = numberReverse;
+      console.log(numberData);
+      setAnalyzeData(temp);
+    });
   };
-  useEffect(() => {
-    recentData();
-  }, [analyzeData]);
-    function useInterval(callback: () => void | (() => void), delay: number) {
-      const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
+    useEffect(() => {
+      recentData();
+    }, [analyzeData]);
+  function useInterval(callback: () => void | (() => void), delay: number) {
+    const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
 
-      useEffect(() => {
-        savedCallback.current = callback;
-      }, [callback]);
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
 
-      useEffect(() => {
-        function tick() {
-          const cb = savedCallback.current;
-          if (cb) {
-            const cleanup = cb();
-            if (cleanup) {
-              return cleanup;
-            }
+    useEffect(() => {
+      function tick() {
+        const cb = savedCallback.current;
+        if (cb) {
+          const cleanup = cb();
+          if (cleanup) {
+            return cleanup;
           }
         }
-        if (delay !== null) {
-          let id = setInterval(tick, delay);
-          return () => clearInterval(id);
-        }
-      }, [delay]);
-    }
-    useInterval(() => {
-        recentData();
-},1000)
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+  useInterval(() => {
+    recentData();
+  }, 1000);
   return (
     <ScrollViewContainer
       horizontal
