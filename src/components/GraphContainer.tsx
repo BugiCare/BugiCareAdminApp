@@ -58,7 +58,7 @@ export const GraphContainer = (props: {
     axios.get('http://15.164.7.163:8080/count/day/refrigerator').then(json => {
       const temp = analyzedData;
       const numberData = json.data.map((str: string) => parseInt(str));
-      const numberReverse = numberData;
+      const numberReverse = numberData.reverse();
       temp.냉장고열림[0] = numberReverse;
       console.log(numberData);
       setAnalyzeData(temp);
@@ -66,7 +66,7 @@ export const GraphContainer = (props: {
   };
     useEffect(() => {
       recentData();
-    }, [analyzeData]);
+    }, []);
   function useInterval(callback: () => void | (() => void), delay: number) {
     const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
 
@@ -92,7 +92,7 @@ export const GraphContainer = (props: {
   }
   useInterval(() => {
     recentData();
-  }, 1000);
+  }, 5000);
   return (
     <ScrollViewContainer
       horizontal
