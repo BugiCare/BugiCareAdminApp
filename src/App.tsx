@@ -155,7 +155,7 @@ const HomeScreen = ({navigation, route}: any) => {
   );
 };
 const Stack = createNativeStackNavigator();
-const App = () => {
+const App = ({navigation,route}:any) => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -183,7 +183,7 @@ const App = () => {
       </MainView>
 
       <Navbar>
-        <IconButton types={images.homeIcon} width={18} />
+        <IconButton types={images.homeIcon}  width={18} />
         <IconButton types={images.searchIcon} width={18} />
         <IconButton types={images.myInfoIcon} width={18} />
         <IconButton types={images.settingIcon} width={18} />

@@ -75,11 +75,8 @@ const ProfileScreen = ({navigation, route}: any) => {
   };
 
   const getProfileImage = () => {
-    // axios.get('http://15.164.7.163:8080/userImage/1').then(json => {
-    //   const img = json.data;
-
-    //   setProfileImg(`data:image/png;base64,${img.img}`);
-
+    
+   
     axios
       .get(`http://15.164.7.163:8080/userImage/${route.params.user.id}`, {
         responseType: 'blob',
