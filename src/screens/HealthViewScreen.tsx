@@ -85,7 +85,7 @@ const HealthViewScreen = () => {
   return (
     <MainView>
       <WhiteBackGround style={{height: 550}}>
-        <TopButton colorTheme={'#9ec9ff'} text={'행동 분석'} />
+        <TopButton flex={0.2 } colorTheme={'#9ec9ff'} text={'행동 분석'} />
               <SelectBarView>
                   {['활동시간','문열림','냉장고열림'].map((item, i):any => {
                       return (

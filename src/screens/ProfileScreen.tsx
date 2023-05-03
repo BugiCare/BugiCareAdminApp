@@ -56,6 +56,12 @@ const ProfileTextKey = styled.Text`
   background: #f3dede;
   border-radius: 50px;
 `;
+const FlexContainer = styled.View`
+flex-direction:row;
+flex:0.5;
+margin-left:10px;
+margin-right:10px;
+`
 const Stack = createNativeStackNavigator();
 const ProfileScreen = ({navigation, route}: any) => {
   const [num, setNum] = useState(0);
@@ -93,7 +99,7 @@ const ProfileScreen = ({navigation, route}: any) => {
   return (
     <MainView>
       <WhiteBackGround style={{height: 450}}>
-        <TopButton colorTheme="#9ec9ff" text="상세 정보" />
+        <TopButton flex={0.2}colorTheme="#9ec9ff" text="상세 정보" />
         <View style={{flex: 0.7, flexDirection: 'row'}}>
           <ProfilePhoto source={{uri: profileImg}} resizeMode="contain" />
           <View style={{flex: 1, justifyContent: 'center'}}></View>
@@ -118,7 +124,9 @@ const ProfileScreen = ({navigation, route}: any) => {
         </ProfileTextBox>
         <View style={{flex: 0.2}}></View>
       </WhiteBackGround>
-      <SmallButton
+      <FlexContainer>
+        <SmallButton
+          flex={1}
         colorTheme={'#F1B6B6'}
         text={'실시간 영상'}
         types={images.myInfoIcon}
@@ -126,20 +134,34 @@ const ProfileScreen = ({navigation, route}: any) => {
           navigation.navigate('실시간 영상');
         }}
       />
-      <SmallButton
+        <SmallButton
+          flex={1}
         colorTheme={'#F1B6B6'}
         text={'분석 결과 보기'}
         types={images.settingIcon}
         onPress={() => {
           navigation.navigate('분석결과'); // 어디든 만들어만 놓으면 댐
         }}
-      />
-      <SmallButton
+        />
+      </FlexContainer>
+      <FlexContainer>
+        <SmallButton
+          flex={1}
         colorTheme={'#F1B6B6'}
         text={'긴급 전화'}
         types={images.phoneIcon}
-        onPress={() => Linking.openURL(`tel:010-7292-6684`)}
+        onPress={() => Linking.openURL(`tel:${route.params.user.phone}`)}
       />
+        <SmallButton
+          flex={1}
+        colorTheme={'#F1B6B6'}
+          text={'스피커로 대화'}
+        types={images.phoneIcon}
+        onPress={()=>{navigation.navigate('채팅')}}
+        />
+        </FlexContainer>
+     
+      
     </MainView>
   );
 };

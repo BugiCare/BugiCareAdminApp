@@ -16,7 +16,7 @@ const AlarmContainer = styled.ScrollView`
 
 
 // const socket = io('http://192.168.1.3:5000');
-const AlarmScreen = () => {
+const LiveVideoScreen = () => {
   const [imageData, setImageData] = useState('');
 
   // useEffect(() => {
@@ -28,7 +28,7 @@ const AlarmScreen = () => {
   return (
     <MainView>
       <WhiteBackGround>
-        <TopButton colorTheme={'#9ec9ff'} text={'실시간 영상'}></TopButton>
+        <TopButton flex={0.2} colorTheme={'#9ec9ff'} text={'실시간 영상'}></TopButton>
         <AlarmContainer>
           <View>
             {imageData ? (
@@ -42,4 +42,4 @@ const AlarmScreen = () => {
     </MainView>
   );
 };
-export default AlarmScreen;
+export default LiveVideoScreen;

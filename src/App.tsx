@@ -4,8 +4,9 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-bootstrap';
 import ProfileScreen from './screens/ProfileScreen';
-import AlarmScreen from './screens/LiveVideoScreen';
+import LiveVideoScreen from './screens/LiveVideoScreen';
 import HealthViewScreen from './screens/HealthViewScreen';
+import HealthCheckScreen from './screens/HealthCheckScreen';
 
 import {
   Button,
@@ -91,7 +92,27 @@ export const WhiteBackGround = styled.View`
   border-radius: 30px;
 `;
 const HomeScreen = ({navigation, route}: any) => {
-  const [myInfo, setMyInfo] = useState<DataTypes[]>([]);
+  const [myInfo, setMyInfo] = useState<DataTypes[]>([{id: 99,
+    name:"example",
+    address: "example",
+    age: 99,
+    phone: "example"},{id: 99,
+      name:"example",
+      address: "example",
+      age: 99,
+      phone: "example"},{id: 99,
+        name:"example",
+        address: "example",
+        age: 99,
+        phone: "example"},{id: 99,
+          name:"example",
+          address: "example",
+          age: 99,
+          phone: "example"},{id: 99,
+            name:"example",
+            address: "example",
+            age: 99,
+            phone: "example"},]);
   const getInfo = () => {
     axios
       .get('http://15.164.7.163:8080/allUser') // 여기에 아마 서버 주소??
@@ -114,14 +135,13 @@ const HomeScreen = ({navigation, route}: any) => {
           <LogoImage source={images.menuIcon} width={30} resizeMode="contain" />
         </MenuIcon>
       </Navbar>
-
-      <WhiteBackGround style={{paddingBottom: 20}}>
-        <ScrollView>
-          <TopButton colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
-
+      <TopButton flex={0.5} colorTheme={'#9ec9ff'} text={'담당 어르신 목록'}  />
+      <WhiteBackGround style={{ paddingBottom: 20,paddingTop:20 }}>
+        <ScrollView >
           {myInfo.map((user, i) => {
             return (
               <UserList
+                flex={0.5}
                 types={images.myInfoIcon}
                 text={user.name}
                 onPress={() => {
@@ -155,8 +175,9 @@ const App = () => {
               }}
             />
             <Stack.Screen name="상세 정보" component={ProfileScreen} />
-            <Stack.Screen name="실시간 영상" component={AlarmScreen} />
+            <Stack.Screen name="실시간 영상" component={LiveVideoScreen} />
             <Stack.Screen name="분석결과" component={HealthViewScreen} />
+            <Stack.Screen name="채팅" component={HealthCheckScreen}/>
           </Stack.Navigator>
         </NavigationContainer>
       </MainView>

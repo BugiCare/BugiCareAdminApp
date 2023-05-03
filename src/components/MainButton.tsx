@@ -38,8 +38,8 @@ export const MainButtonBG = styled(Button)<ButtonTheme>`
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 20;
-  padding-right: 20;
+  padding-left: 10;
+  padding-right: 10;
   background: ${props => props.theme};
   border-radius: 100px;
 `;
@@ -55,6 +55,7 @@ type MainButtonType = {
   colorTheme?: string;
   text?: string;
   types?: ImageSourcePropType;
+  flex: number;
   onPress?: () => void;
 };
 export const UserList = ({text, types, onPress}: MainButtonType) => {
@@ -67,7 +68,7 @@ export const UserList = ({text, types, onPress}: MainButtonType) => {
         style={{justifyContent: 'flex-start'}}>
         {text}
           </ButtonText>
-          <TopButton colorTheme='#ffffff'></TopButton>
+          <TopButton flex={1} colorTheme='#ffffff'></TopButton>
       <IconButton types={images.phoneIcon} width={15}></IconButton>
     </UserContainer>
   );
@@ -90,7 +91,7 @@ export const SmallButton = ({
   onPress,
 }: MainButtonType) => {
   return (
-    <MainButtonBG flex={0.8} theme={colorTheme} width={50} onPress={onPress}>
+    <MainButtonBG flex={0.5} theme={colorTheme} width={50} onPress={onPress}>
       <LogoImage source={types} width={25} resizeMode="contain"></LogoImage>
       <ButtonText fontWeight={400} fontSize={22}>
         {text}
@@ -98,9 +99,9 @@ export const SmallButton = ({
     </MainButtonBG>
   );
 };
-export const TopButton = ({colorTheme, text, onPress}: MainButtonType) => {
+export const TopButton = ({colorTheme, text, onPress,flex}: MainButtonType) => {
   return (
-    <MainButtonBG flex={0.2} theme={colorTheme} width={50} onPress={onPress}>
+    <MainButtonBG flex={flex} theme={colorTheme} width={50} onPress={onPress}>
       <ButtonText fontWeight={400} fontSize={20}>
         {text}
       </ButtonText>
