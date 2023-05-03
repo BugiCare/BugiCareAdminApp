@@ -4,9 +4,8 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-bootstrap';
 import ProfileScreen from './screens/ProfileScreen';
-import AlarmScreen from './screens/AlarmScreen';
+import AlarmScreen from './screens/LiveVideoScreen';
 import HealthViewScreen from './screens/HealthViewScreen';
-
 
 import {
   Button,
@@ -18,7 +17,8 @@ import {
   TouchableOpacity,
   useColorScheme,
   View,
-  Linking
+  Linking,
+  FlatList,
 } from 'react-native';
 import {
   Colors,
@@ -42,11 +42,11 @@ interface PropsType {
   width: number;
 }
 interface DataTypes {
-  id: string;
+  id: number;
   name: string;
   address: string;
   age: number;
-  phoneNum: number;
+  phone: string;
 }
 
 const FullView = styled.SafeAreaView`
@@ -94,9 +94,7 @@ const HomeScreen = ({navigation, route}: any) => {
   const [myInfo, setMyInfo] = useState<DataTypes[]>([]);
   const getInfo = () => {
     axios
-      .get(
-        'https://raw.githubusercontent.com/BugiCare/BugiCareUserApp/master/src/data.json',
-      ) // 여기에 아마 서버 주소??
+      .get('http://15.164.7.163:8080/allUser') // 여기에 아마 서버 주소??
       .then(json => {
         const infoData = json.data;
         setMyInfo(infoData);
@@ -118,17 +116,20 @@ const HomeScreen = ({navigation, route}: any) => {
       </Navbar>
 
       <WhiteBackGround style={{paddingBottom: 20}}>
-        <TopButton colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
-        {myInfo.map((user, i) => {
-          return (
-            <UserList
-              types={images.myInfoIcon}
-              text={user.name}
-              onPress={() => {
-                navigation.navigate('상세 정보', {user});
-              }}></UserList>
-          );
-        })}
+        <ScrollView>
+          <TopButton colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
+
+          {myInfo.map((user, i) => {
+            return (
+              <UserList
+                types={images.myInfoIcon}
+                text={user.name}
+                onPress={() => {
+                  navigation.navigate('상세 정보', {user});
+                }}></UserList>
+            );
+          })}
+        </ScrollView>
       </WhiteBackGround>
     </MainView>
   );

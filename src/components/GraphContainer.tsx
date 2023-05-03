@@ -28,7 +28,7 @@ export const GraphContainer = (props: {
   const analyzedData = {
     활동시간: [
       //key
-      [0, 1, 2, 3, 4, 5], //시간단위
+      [8, 1, 2, 3, 4, 5], //시간단위
 
       [5, 8, 1, 9, 2, 4, 5], //일단뒤
 
@@ -64,9 +64,9 @@ export const GraphContainer = (props: {
       setAnalyzeData(temp);
     });
   };
-    useEffect(() => {
-      recentData();
-    }, []);
+  useEffect(() => {
+    recentData();
+  }, []);
   function useInterval(callback: () => void | (() => void), delay: number) {
     const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
 
@@ -101,27 +101,31 @@ export const GraphContainer = (props: {
       decelerationRate="fast"
       showsHorizontalScrollIndicator={false}>
       {['시간', '하루', '주'].map((item, i) => {
+        const graphData = analyzeData[props.content][i]; //현제 그래프에 해당하는 데이터값
+        const nowData = graphData[graphData.length - 1]; //현재 그래프의 평균
         return (
           <View key={i}>
             <LineGraph
               period={item}
               content={props.content}
-              analyzeData={analyzeData[props.content][i]}></LineGraph>
+              analyzeData={graphData}></LineGraph>
             <MainButtonBG flex={1} theme={'#9ec9ff'} width={70}>
               <CountText>
                 {item} 평균 {props.content} :{' '}
                 {Math.floor(
-                  (analyzeData[props.content][i].reduce(
-                    (a: number, c: number) => a + c,
-                    0,
-                  ) /
-                    analyzeData[props.content][i].length) *
+                  (graphData.reduce((a: number, c: number) => a + c, 0) /
+                    graphData.length) *
                     10,
                 ) / 10}
               </CountText>
             </MainButtonBG>
-            <MainButtonBG flex={1} theme={'#9ec9ff'} width={70}>
-              <CountText>현재 {props.content} : </CountText>
+            <MainButtonBG
+              flex={1}
+              theme={nowData > 5 ? '#95f88c' : '#ef3333'}
+              width={70}>
+              <CountText>
+                현재 {props.content} : {nowData}
+              </CountText>
             </MainButtonBG>
           </View>
         );

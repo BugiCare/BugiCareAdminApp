@@ -15,6 +15,7 @@ interface ButtonTheme {
 }
 const UserContainer = styled(Button)`
   width: 100%;
+  height:150px;
   flex-direction: row;
   justify-content: flex-start;
   position: relative;

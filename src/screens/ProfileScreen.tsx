@@ -69,11 +69,20 @@ const ProfileScreen = ({navigation, route}: any) => {
   };
 
   const getProfileImage = () => {
-    axios.get('http://3.36.218.186:5000/image2').then(json => {
-      const img = json.data;
+    // axios.get('http://15.164.7.163:8080/userImage/1').then(json => {
+    //   const img = json.data;
 
-      setProfileImg(`data:image/png;base64,${img.img}`);
-    });
+    //   setProfileImg(`data:image/png;base64,${img.img}`);
+
+    axios
+      .get(`http://15.164.7.163:8080/userImage/${route.params.user.id}`, {
+        responseType: 'blob',
+      })
+      .then(response => {
+        const imageBlob = new Blob([response.data]);
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setProfileImg(imageUrl);
+      });
   };
   useEffect(() => {
     getProfileImage();
@@ -101,7 +110,7 @@ const ProfileScreen = ({navigation, route}: any) => {
         </ProfileTextBox>
         <ProfileTextBox>
           <ProfileTextKey>연락처</ProfileTextKey>
-          <Text>0{route.params.user.phoneNum}</Text>
+          <Text>{route.params.user.phone}</Text>
         </ProfileTextBox>
         <ProfileTextBox>
           <ProfileTextKey>주소</ProfileTextKey>
