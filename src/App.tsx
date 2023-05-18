@@ -8,6 +8,7 @@ import LiveVideoScreen from './screens/LiveVideoScreen';
 import HealthViewScreen from './screens/HealthViewScreen';
 import HealthCheckScreen from './screens/HealthCheckScreen';
 import messaging from '@react-native-firebase/messaging';
+import notifee from '@notifee/react-native';
 
 async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -24,6 +25,26 @@ async function requestUserPermission() {
       .catch(e => console.log('error: ', e));
   }
 }
+const onDisplayNotification = async ({
+  title = '알림',
+  body = '이게되네',
+}: {
+  title?: string;
+  body?: string;
+}) => {
+  const channelId = await notifee.createChannel({
+    id: 'channelId',
+    name: 'channelName',
+  });
+
+  await notifee.displayNotification({
+    title,
+    body,
+    android: {
+      channelId,
+    },
+  });
+};
 
 import {
   Button,
@@ -128,6 +149,7 @@ const HomeScreen = ({navigation, route}: any) => {
   useEffect(() => {
     requestUserPermission();
     getInfo();
+    onDisplayNotification({});
   }, []);
   return (
     <MainView>

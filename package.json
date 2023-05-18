@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@notifee/react-native": "^7.7.1",
     "@react-native-community/datetimepicker": "^6.7.5",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^17.5.0",
