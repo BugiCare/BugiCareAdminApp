@@ -109,27 +109,13 @@ export const WhiteBackGround = styled.View`
   border-radius: 30px;
 `;
 const HomeScreen = ({navigation, route}: any) => {
-  const [myInfo, setMyInfo] = useState<DataTypes[]>([{id: 99,
-    name:"example",
-    address: "example",
-    age: 99,
-    phone: "example"},{id: 99,
-      name:"example",
-      address: "example",
-      age: 99,
-      phone: "example"},{id: 99,
-        name:"example",
-        address: "example",
-        age: 99,
-        phone: "example"},{id: 99,
-          name:"example",
-          address: "example",
-          age: 99,
-          phone: "example"},{id: 99,
-            name:"example",
-            address: "example",
-            age: 99,
-            phone: "example"},]);
+  const [myInfo, setMyInfo] = useState<DataTypes[]>([
+    {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
+    {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
+    {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
+    {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
+    {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
+  ]);
   const getInfo = () => {
     axios
       .get('http://15.164.7.163:8080/allUser') // 여기에 아마 서버 주소??
@@ -140,6 +126,7 @@ const HomeScreen = ({navigation, route}: any) => {
   };
 
   useEffect(() => {
+    requestUserPermission();
     getInfo();
   }, []);
   return (
@@ -152,9 +139,9 @@ const HomeScreen = ({navigation, route}: any) => {
           <LogoImage source={images.menuIcon} width={30} resizeMode="contain" />
         </MenuIcon>
       </Navbar>
-      <TopButton flex={0.5} colorTheme={'#9ec9ff'} text={'담당 어르신 목록'}  />
-      <WhiteBackGround style={{ paddingBottom: 20,paddingTop:20 }}>
-        <ScrollView >
+      <TopButton flex={0.5} colorTheme={'#9ec9ff'} text={'담당 어르신 목록'} />
+      <WhiteBackGround style={{paddingBottom: 20, paddingTop: 20}}>
+        <ScrollView>
           {myInfo.map((user, i) => {
             return (
               <UserList
@@ -172,7 +159,7 @@ const HomeScreen = ({navigation, route}: any) => {
   );
 };
 const Stack = createNativeStackNavigator();
-const App = ({navigation,route}:any) => {
+const App = ({navigation, route}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -194,13 +181,13 @@ const App = ({navigation,route}:any) => {
             <Stack.Screen name="상세 정보" component={ProfileScreen} />
             <Stack.Screen name="실시간 영상" component={LiveVideoScreen} />
             <Stack.Screen name="분석결과" component={HealthViewScreen} />
-            <Stack.Screen name="채팅" component={HealthCheckScreen}/>
+            <Stack.Screen name="채팅" component={HealthCheckScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </MainView>
 
       <Navbar>
-        <IconButton types={images.homeIcon}  width={18} />
+        <IconButton types={images.homeIcon} width={18} />
         <IconButton types={images.searchIcon} width={18} />
         <IconButton types={images.myInfoIcon} width={18} />
         <IconButton types={images.settingIcon} width={18} />
