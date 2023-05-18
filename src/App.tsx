@@ -16,7 +16,12 @@ async function requestUserPermission() {
     authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
   if (enabled) {
-    console.log('Authorization status:', authStatus);
+    await messaging()
+      .getToken()
+      .then(fcmToken => {
+        console.log('token: ', fcmToken);
+      })
+      .catch(e => console.log('error: ', e));
   }
 }
 
