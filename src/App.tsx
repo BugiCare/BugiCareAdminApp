@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Image} from 'react-bootstrap';
 import ProfileScreen from './screens/ProfileScreen';
 import LiveVideoScreen from './screens/LiveVideoScreen';
@@ -9,6 +9,8 @@ import HealthViewScreen from './screens/HealthViewScreen';
 import HealthCheckScreen from './screens/HealthCheckScreen';
 import messaging from '@react-native-firebase/messaging';
 import notifee from '@notifee/react-native';
+import {notiContext} from './AppContext';
+import {notiValue} from './AppContext';
 
 async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -25,9 +27,10 @@ async function requestUserPermission() {
       .catch(e => console.log('error: ', e));
   }
 }
+
 const onDisplayNotification = async ({
   title = '알림',
-  body = '이게되네',
+  body = '쿵해쪄',
 }: {
   title?: string;
   body?: string;
@@ -149,8 +152,10 @@ const HomeScreen = ({navigation, route}: any) => {
   useEffect(() => {
     requestUserPermission();
     getInfo();
-    onDisplayNotification({});
+    
+    // onDisplayNotification({});
   }, []);
+
   return (
     <MainView>
       <Navbar>
@@ -182,39 +187,90 @@ const HomeScreen = ({navigation, route}: any) => {
 };
 const Stack = createNativeStackNavigator();
 const App = ({navigation, route}: any) => {
+  const [fallenValue, setFallenValue] = useState(true);
+  const showNoti = () => {
+    onDisplayNotification({});
+    setFallenValue(false);
+  };
+  const getNoti = () => {
+    if (fallenValue) {
+    axios
+      .get('http://15.164.7.163:8080/fallen') // 여기에 아마 서버 주소??
+      .then(json => {
+        const infoData = json.data;
+        console.log(infoData)
+          infoData != true ? console.log(infoData) : showNoti();
+        
+      });
+    }
+  };
+  function useInterval(callback: () => void | (() => void), delay: number) {
+    const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        const cb = savedCallback.current;
+        if (cb) {
+          const cleanup = cb();
+          if (cleanup) {
+            return cleanup;
+          }
+        }
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useInterval(() => {
+    getNoti();
+  }, 5000);
+  useEffect(() => {
+    setFallenValue(true)
+  },[])
   return (
-    <FullView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <notiContext.Provider value={getNoti}>
+      <notiValue.Provider value={"true"}>
+        <FullView style={backgroundStyle}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 
-      <MainView>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen name="상세 정보" component={ProfileScreen} />
-            <Stack.Screen name="실시간 영상" component={LiveVideoScreen} />
-            <Stack.Screen name="분석결과" component={HealthViewScreen} />
-            <Stack.Screen name="채팅" component={HealthCheckScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </MainView>
+          <MainView>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Home"
+                  component={HomeScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen name="상세 정보" component={ProfileScreen} />
+                <Stack.Screen name="실시간 영상" component={LiveVideoScreen} />
+                <Stack.Screen name="분석결과" component={HealthViewScreen} />
+                <Stack.Screen name="채팅" component={HealthCheckScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </MainView>
 
-      <Navbar>
-        <IconButton types={images.homeIcon} width={18} />
-        <IconButton types={images.searchIcon} width={18} />
-        <IconButton types={images.myInfoIcon} width={18} />
-        <IconButton types={images.settingIcon} width={18} />
-      </Navbar>
-    </FullView>
+          <Navbar>
+            <IconButton types={images.homeIcon} width={18} onPress={()=>{setFallenValue(true)}} />
+            <IconButton types={images.searchIcon} width={18} />
+            <IconButton types={images.myInfoIcon} width={18} />
+            <IconButton types={images.settingIcon} width={18} />
+          </Navbar>
+        </FullView>
+      </notiValue.Provider>
+    </notiContext.Provider>
   );
 };
 const styles = StyleSheet.create({
