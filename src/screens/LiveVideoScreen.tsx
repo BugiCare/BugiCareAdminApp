@@ -1,12 +1,14 @@
 import React, {useRef, useState} from 'react';
 
 import {SmallButton, TopButton} from '../components/MainButton';
-import {WhiteBackGround, MainView} from '../App';
+import {WhiteBackGround, MainView, Navbar} from '../App';
 import {Button, Image, ScrollView, Text, TextInput, View} from 'react-native';
 import styled from 'styled-components/native';
 
 import {useEffect} from 'react';
 import axios from 'axios';
+import IconButton from '../components/IconButton';
+import { images } from '../image';
 
 const ProfilePhoto = styled.Image`
   flex: 1;
@@ -20,7 +22,7 @@ const AlarmContainer = styled.ScrollView`
   padding-top: 20px;
 `;
 
-const LiveVideoScreen = () => {
+const LiveVideoScreen = ({navigation,route}:any) => {
   const [CCTV, setCCTV] = useState('');
   const [imageData, setImageData] = useState('');
 
@@ -69,6 +71,12 @@ const LiveVideoScreen = () => {
         <TopButton flex={0.2} colorTheme={'#9ec9ff'} text={'실시간 영상'}></TopButton>
         <ProfilePhoto source={{uri:`${imageData}`}} resizeMode="contain"/>
       </WhiteBackGround>
+      <Navbar>
+            <IconButton types={images.homeIcon} width={18} onPress={() => { navigation.popToTop()}} />
+            <IconButton types={images.searchIcon} width={18} />
+            <IconButton types={images.myInfoIcon} width={18} />
+            <IconButton types={images.settingIcon} width={18} />
+          </Navbar>
     </MainView>
   );
 };

@@ -1,4 +1,4 @@
-import {LogoImage, MainView, WhiteBackGround} from '../App';
+import {LogoImage, MainView, Navbar, WhiteBackGround} from '../App';
 import React from 'react';
 
 import MainButton, {SmallButton, TopButton} from '../components/MainButton';
@@ -17,7 +17,8 @@ import {useState} from 'react';
 import {useEffect} from 'react';
 import {GraphContainer} from '../components/GraphContainer';
 import axios from 'axios';
-import { NavItem } from 'react-bootstrap';
+import {NavItem} from 'react-bootstrap';
+import IconButton from '../components/IconButton';
 
 interface healthDataType {
   id: number;
@@ -57,7 +58,7 @@ var lineGraph: any = {
   냉장고열림: <GraphContainer content={'냉장고열림'} />,
 }; // state 상태에 따라 다른 컴포넌트 렌더링
 
-const HealthViewScreen = () => {
+const HealthViewScreen = ({navigation, route}: any) => {
   const [selectedInfo, setSelectedInfo] = useState('활동시간');
   const [springData, setSpringData] = useState('');
 
@@ -85,19 +86,19 @@ const HealthViewScreen = () => {
   return (
     <MainView>
       <WhiteBackGround style={{height: 550}}>
-        <TopButton flex={0.2 } colorTheme={'#9ec9ff'} text={'행동 분석'} />
-              <SelectBarView>
-                  {['활동시간','문열림','냉장고열림'].map((item, i):any => {
-                      return (
-                        <SelectBar
-                        theme={selectedInfo == item ? '#d2c9ff' : '#9ec9ff'}
-                        onPress={() => {
-                          setSelectedInfo(item);
-                        }}>
-                              <SelectBarText>{ item}</SelectBarText>
-                      </SelectBar>
-                      )
-                  })}
+        <TopButton flex={0.2} colorTheme={'#9ec9ff'} text={'행동 분석'} />
+        <SelectBarView>
+          {['활동시간', '문열림', '냉장고열림'].map((item, i): any => {
+            return (
+              <SelectBar
+                theme={selectedInfo == item ? '#d2c9ff' : '#9ec9ff'}
+                onPress={() => {
+                  setSelectedInfo(item);
+                }}>
+                <SelectBarText>{item}</SelectBarText>
+              </SelectBar>
+            );
+          })}
           {/* <SelectBar
             theme={selectedInfo == 'act' ? '#d2c9ff' : '#9ec9ff'}
             onPress={() => {
@@ -122,8 +123,19 @@ const HealthViewScreen = () => {
         </SelectBarView>
         {/* <HealthScrollView data ={healthData} renderItem={renderItem}/> */}
         {lineGraph[selectedInfo]}
-        
       </WhiteBackGround>
+      <Navbar>
+        <IconButton
+          types={images.homeIcon}
+          width={18}
+          onPress={() => {
+            navigation.popToTop();
+          }}
+        />
+        <IconButton types={images.searchIcon} width={18} />
+        <IconButton types={images.myInfoIcon} width={18} />
+        <IconButton types={images.settingIcon} width={18} />
+      </Navbar>
     </MainView>
   );
 };

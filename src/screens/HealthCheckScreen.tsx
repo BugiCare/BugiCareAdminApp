@@ -1,4 +1,4 @@
-import {LogoImage, MainView, WhiteBackGround} from '../App';
+import {LogoImage, MainView, Navbar, WhiteBackGround} from '../App';
 import React from 'react';
 import {ButtonText, SmallButton, TopButton} from '../components/MainButton';
 import {
@@ -18,11 +18,11 @@ import styled from 'styled-components/native';
 import {useState} from 'react';
 import {useEffect} from 'react';
 import axios from 'axios';
+import IconButton from '../components/IconButton';
+import {AnyStyledComponent} from 'styled-components';
 type MainButtonType = {
-    
-    onPress?: ()=> void;
-  };
-  
+  onPress?: () => void;
+};
 
 const TTSButton = styled.Pressable<MainButtonType>`
 display:flex;
@@ -64,7 +64,7 @@ const Container = styled.SafeAreaView`
   flex-grow: 1;
 `;
 
-const HealthCheckScreen = () => {
+const HealthCheckScreen = ({navigation, route}: any) => {
   const [title, setTitle] = useState<string>();
   const [hello, setHello] = useState([
     '좋은 아침이에요',
@@ -106,35 +106,44 @@ const HealthCheckScreen = () => {
             data={hello}
             renderItem={itemData => {
               return (
-                <TTSButton onPress={() => { handleSubmit(itemData.item) }}>
+                <TTSButton
+                  onPress={() => {
+                    handleSubmit(itemData.item);
+                  }}>
                   <TTSButtonText>{itemData.item}</TTSButtonText>
                 </TTSButton>
               );
             }}
           />
         </View>
-              <TopButton flex={0.1} colorTheme={'#d2c9ff'} text={'건강챙기기'} />
-              <View style={{flex: 0.15}}>
+        <TopButton flex={0.1} colorTheme={'#d2c9ff'} text={'건강챙기기'} />
+        <View style={{flex: 0.15}}>
           <FlatList
             horizontal={true}
             data={health}
             renderItem={itemData => {
               return (
-                <TTSButton onPress={() => { handleSubmit(itemData.item) }}>
+                <TTSButton
+                  onPress={() => {
+                    handleSubmit(itemData.item);
+                  }}>
                   <TTSButtonText>{itemData.item}</TTSButtonText>
                 </TTSButton>
               );
             }}
           />
-              </View>
-              <TopButton flex={0.1} colorTheme={'#d2c9ff'} text={'식사'} />
-              <View style={{flex: 0.15}}>
+        </View>
+        <TopButton flex={0.1} colorTheme={'#d2c9ff'} text={'식사'} />
+        <View style={{flex: 0.15}}>
           <FlatList
             horizontal={true}
             data={meal}
             renderItem={itemData => {
               return (
-                  <TTSButton onPress={() => { handleSubmit(itemData.item) }}>
+                <TTSButton
+                  onPress={() => {
+                    handleSubmit(itemData.item);
+                  }}>
                   <TTSButtonText>{itemData.item}</TTSButtonText>
                 </TTSButton>
               );
@@ -153,6 +162,18 @@ const HealthCheckScreen = () => {
   onSubmitEditing={handleSubmit}
 /> */}
       </WhiteBackGround>
+      <Navbar>
+        <IconButton
+          types={images.homeIcon}
+          width={18}
+          onPress={() => {
+            navigation.popToTop();
+          }}
+        />
+        <IconButton types={images.searchIcon} width={18} />
+        <IconButton types={images.myInfoIcon} width={18} />
+        <IconButton types={images.settingIcon} width={18} />
+      </Navbar>
     </MainView>
   );
 };

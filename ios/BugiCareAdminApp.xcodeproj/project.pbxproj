@@ -487,7 +487,7 @@
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal\"",
 				);
 				INFOPLIST_FILE = BugiCareAdminApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BugiCareAdminApp;
+				INFOPLIST_KEY_CFBundleDisplayName = "부기케어";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,7 +515,7 @@
 				DEVELOPMENT_TEAM = U6V56B5HN8;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = BugiCareAdminApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = BugiCareAdminApp;
+				INFOPLIST_KEY_CFBundleDisplayName = "부기케어";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

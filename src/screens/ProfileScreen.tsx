@@ -9,10 +9,22 @@ import {WhiteBackGround, MainView} from '../App';
 import TimePicker from '../components/Alarm';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HealthViewScreen from './HealthViewScreen';
+import { NavbarComponent } from '../components/Navbar';
+
+import IconButton from '../components/IconButton';
 
 interface SelectBarTheme {
   theme: string;
 }
+const Navbar = styled.View`
+  height: 70;
+  flex-direction: row;
+  padding-left: 5;
+  padding-right: 5;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+`;
 const SelectBarView = styled.View`
   flex: 1;
   left: 5%;
@@ -62,7 +74,7 @@ flex:0.5;
 margin-left:10px;
 margin-right:10px;
 `
-const Stack = createNativeStackNavigator();
+
 const ProfileScreen = ({navigation, route}: any) => {
   const [num, setNum] = useState(0);
   const [profileImg, setProfileImg] = useState('');
@@ -145,9 +157,10 @@ const ProfileScreen = ({navigation, route}: any) => {
         <SmallButton
           flex={1}
         colorTheme={'#F1B6B6'}
-        text={'긴급 전화'}
+        text={'긴급 전화 연락'}
         types={images.phoneIcon}
-        onPress={() => Linking.openURL(`tel:${route.params.user.phone}`)}
+          onPress={() =>
+            Linking.openURL(`tel:${route.params.user.phone}`)}
       />
         <SmallButton
           flex={1}
@@ -158,7 +171,12 @@ const ProfileScreen = ({navigation, route}: any) => {
         />
         </FlexContainer>
      
-      
+        <Navbar>
+            <IconButton types={images.homeIcon} width={18} onPress={()=>{navigation.popToTop()}} />
+            <IconButton types={images.searchIcon} width={18} />
+            <IconButton types={images.myInfoIcon} width={18} />
+            <IconButton types={images.settingIcon} width={18} />
+          </Navbar>
     </MainView>
   );
 };

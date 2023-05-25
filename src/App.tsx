@@ -1,4 +1,4 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import axios from 'axios';
 import React, {useEffect, useRef, useState} from 'react';
@@ -95,7 +95,7 @@ const FullView = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
 `;
-const Navbar = styled.View`
+export const Navbar = styled.View`
   height: 70;
   flex-direction: row;
   padding-left: 5;
@@ -152,7 +152,7 @@ const HomeScreen = ({navigation, route}: any) => {
   useEffect(() => {
     requestUserPermission();
     getInfo();
-    
+
     // onDisplayNotification({});
   }, []);
 
@@ -182,6 +182,18 @@ const HomeScreen = ({navigation, route}: any) => {
           })}
         </ScrollView>
       </WhiteBackGround>
+      <Navbar>
+        <IconButton
+          types={images.homeIcon}
+          width={18}
+          onPress={() => {
+            navigation.popToTop();
+          }}
+        />
+        <IconButton types={images.searchIcon} width={18}  />
+        <IconButton types={images.myInfoIcon} width={18} />
+        <IconButton types={images.settingIcon} width={18} />
+      </Navbar>
     </MainView>
   );
 };
@@ -194,14 +206,13 @@ const App = ({navigation, route}: any) => {
   };
   const getNoti = () => {
     if (fallenValue) {
-    axios
-      .get('http://15.164.7.163:8080/fallen') // 여기에 아마 서버 주소??
-      .then(json => {
-        const infoData = json.data;
-        console.log(infoData)
+      axios
+        .get('http://15.164.7.163:8080/fallen')
+        .then(json => {
+          const infoData = json.data;
+          console.log(infoData);
           infoData != true ? console.log(infoData) : showNoti();
-        
-      });
+        });
     }
   };
   function useInterval(callback: () => void | (() => void), delay: number) {
@@ -236,11 +247,11 @@ const App = ({navigation, route}: any) => {
     getNoti();
   }, 5000);
   useEffect(() => {
-    setFallenValue(true)
-  },[])
+    setFallenValue(true);
+  }, []);
   return (
     <notiContext.Provider value={getNoti}>
-      <notiValue.Provider value={"true"}>
+      <notiValue.Provider value={'true'}>
         <FullView style={backgroundStyle}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 
@@ -261,13 +272,6 @@ const App = ({navigation, route}: any) => {
               </Stack.Navigator>
             </NavigationContainer>
           </MainView>
-
-          <Navbar>
-            <IconButton types={images.homeIcon} width={18} onPress={()=>{setFallenValue(true)}} />
-            <IconButton types={images.searchIcon} width={18} />
-            <IconButton types={images.myInfoIcon} width={18} />
-            <IconButton types={images.settingIcon} width={18} />
-          </Navbar>
         </FullView>
       </notiValue.Provider>
     </notiContext.Provider>
