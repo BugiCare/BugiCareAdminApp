@@ -1,4 +1,5 @@
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import axios from 'axios';
 import React, {useEffect, useRef, useState} from 'react';
@@ -190,7 +191,7 @@ const HomeScreen = ({navigation, route}: any) => {
             navigation.popToTop();
           }}
         />
-        <IconButton types={images.searchIcon} width={18}  />
+        <IconButton types={images.searchIcon} width={18} />
         <IconButton types={images.myInfoIcon} width={18} />
         <IconButton types={images.settingIcon} width={18} />
       </Navbar>
@@ -206,13 +207,11 @@ const App = ({navigation, route}: any) => {
   };
   const getNoti = () => {
     if (fallenValue) {
-      axios
-        .get('http://15.164.7.163:8080/fallen')
-        .then(json => {
-          const infoData = json.data;
-          console.log(infoData);
-          infoData != true ? console.log(infoData) : showNoti();
-        });
+      axios.get('http://15.164.7.163:8080/fallen').then(json => {
+        const infoData = json.data;
+        console.log(infoData);
+        infoData != true ? console.log(infoData) : showNoti();
+      });
     }
   };
   function useInterval(callback: () => void | (() => void), delay: number) {
@@ -248,34 +247,46 @@ const App = ({navigation, route}: any) => {
   }, 5000);
   useEffect(() => {
     setFallenValue(true);
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1500);
   }, []);
-  return (
-    <notiContext.Provider value={getNoti}>
-      <notiValue.Provider value={'true'}>
-        <FullView style={backgroundStyle}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+  try {
+    return (
+      <notiContext.Provider value={getNoti}>
+        <notiValue.Provider value={'true'}>
+          <FullView style={backgroundStyle}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            />
 
-          <MainView>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="Home"
-                  component={HomeScreen}
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <Stack.Screen name="상세 정보" component={ProfileScreen} />
-                <Stack.Screen name="실시간 영상" component={LiveVideoScreen} />
-                <Stack.Screen name="분석결과" component={HealthViewScreen} />
-                <Stack.Screen name="채팅" component={HealthCheckScreen} />
-              </Stack.Navigator>
-            </NavigationContainer>
-          </MainView>
-        </FullView>
-      </notiValue.Provider>
-    </notiContext.Provider>
-  );
+            <MainView>
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    name="Home"
+                    component={HomeScreen}
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                  <Stack.Screen name="상세 정보" component={ProfileScreen} />
+                  <Stack.Screen
+                    name="실시간 영상"
+                    component={LiveVideoScreen}
+                  />
+                  <Stack.Screen name="분석결과" component={HealthViewScreen} />
+                  <Stack.Screen name="채팅" component={HealthCheckScreen} />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </MainView>
+          </FullView>
+        </notiValue.Provider>
+      </notiContext.Provider>
+    );
+  } finally {
+    SplashScreen.hide();
+  }
 };
 const styles = StyleSheet.create({
   sectionContainer: {
