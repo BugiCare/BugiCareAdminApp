@@ -13,7 +13,7 @@ export const LineGraph = ({period, content, analyzeData}: any) => {
      "6시간전","5시간전","4시간전","3시간전","2시간전","1시간전"
     ],
     하루: ['일', '월', '화', '수', '목', '금', '토'],
-    주: ['1주', '2주', '3주', '4주'],
+    주: ['3주전', '2주전', '1주전', '이번주'],
   };
   type LabelPeriod = keyof typeof labelData;
   const setLabel = (period: LabelPeriod) => {

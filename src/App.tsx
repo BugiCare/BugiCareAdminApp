@@ -212,6 +212,10 @@ const App = ({navigation, route}: any) => {
         console.log(infoData);
         infoData != true ? console.log(infoData) : showNoti();
       });
+      setTimeout(() => {
+      
+        setFallenValue(true);
+      }, 10000);
     }
   };
   function useInterval(callback: () => void | (() => void), delay: number) {
@@ -244,12 +248,14 @@ const App = ({navigation, route}: any) => {
 
   useInterval(() => {
     getNoti();
-  }, 5000);
+  }, 3000);
   useEffect(() => {
     setFallenValue(true);
     setTimeout(() => {
+      
       SplashScreen.hide();
     }, 1500);
+    
   }, []);
   try {
     return (

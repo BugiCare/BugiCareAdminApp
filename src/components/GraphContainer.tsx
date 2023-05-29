@@ -24,48 +24,116 @@ export const GraphContainer = (props: {
   const [timeData, setTimeData] = useState<number[][]>();
   const [dailyData, setDailyData] = useState<number[][]>();
   const [weeklyData, setWeeklyData] = useState<number[][]>();
+  
+  const [refriTime, setRefriTime] = useState<number[]>([]);
+  const [doorTime, setDoorTime] = useState<number[]>([]);
+  const [sleepTime, setSleepTime] = useState<number[]>([]);
+  const [refriDay, setRefriDay] = useState<number[]>([]);
+  const [doorDay, setDoorDay] = useState<number[]>([]);
+  const [sleepDay, setSleepDay] = useState<number[]>([]);
+  const [refriWeek, setRefriWeek] = useState<number[]>([]);
+  const [doorWeek, setDoorWeek] = useState<number[]>([]);
+  const [sleepWeek, setSleepWeek] = useState<number[]>([]);
+  
 
   const analyzedData = {
     활동시간: [
       //key
-      [8, 1, 2, 3, 4, 5], //시간단위
+      sleepTime, //시간단위
 
-      [5, 8, 1, 9, 2, 4, 5], //일단뒤
+      sleepDay, //일단뒤
 
-      [4, 3, 2, 1], //주단위
+      sleepWeek, //주단위
     ],
     문열림: [
-      [
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20, 21, 22, 23,
-      ],
+      doorTime,
 
-      [0, 0, 0, 0, 0, 0, 0],
+     doorDay,
 
-      [4, 3, 2, 1],
+      doorWeek,
     ],
     냉장고열림: [
-      [1, 2, 3, 4, 5, 6],
+      refriTime,
 
-      [5, 8, 1, 9, 2, 4, 5],
+      refriDay,
 
-      [4, 3, 2, 1],
+      refriWeek,
     ],
   };
   const [analyzeData, setAnalyzeData] = useState(analyzedData);
 
-  const recentData = () => {
-    axios.get('http://15.164.7.163:8080/count/day/refrigerator').then(json => {
-      const temp = analyzedData;
+  const recentData = async () => {
+    await axios.get('http://15.164.7.163:8080/count/day/refrigerator').then(json => {
+      
       const numberData = json.data.map((str: string) => parseInt(str));
       const numberReverse = numberData.reverse();
-      temp.냉장고열림[0] = numberReverse;
-      console.log(numberData);
-      setAnalyzeData(temp);
+     
+      console.log(json.data.reverse()+"reday");
+      setRefriTime(numberReverse);
     });
+    await axios.get('http://15.164.7.163:8080/count/week/refrigerator').then(json => {
+     
+      // const numberData = json.data.map((str: string) => parseInt(str));
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setRefriDay(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/count/month/refrigerator').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setRefriWeek(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/count/day/door').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setDoorTime(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/count/week/door').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setDoorDay(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/count/month/door').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setDoorWeek(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/sleepTime/day').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setSleepTime(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/sleepTime/week').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setSleepDay(numberReverse);
+    });
+    await axios.get('http://15.164.7.163:8080/sleepTime/month').then(json => {
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
+     
+      console.log(json.data.reverse());
+      setSleepWeek(numberReverse);
+    });
+    
   };
   useEffect(() => {
     recentData();
+    setAnalyzeData(analyzedData);
   }, []);
   function useInterval(callback: () => void | (() => void), delay: number) {
     const savedCallback = useRef<() => void | (() => void)>(); // Add type annotation
@@ -92,6 +160,7 @@ export const GraphContainer = (props: {
   }
   useInterval(() => {
     recentData();
+    setAnalyzeData(analyzedData);
   }, 5000);
   return (
     <ScrollViewContainer
