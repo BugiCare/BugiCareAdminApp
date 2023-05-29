@@ -53,13 +53,13 @@ const Container = styled.SafeAreaView`
   flex-grow: 2;
 `;
 var lineGraph: any = {
-  활동시간: <GraphContainer content={'활동시간'} />, // scrollView 안에 차트들 있는 형식으로 해야함
+  수면시간: <GraphContainer content={'수면시간'} />, // scrollView 안에 차트들 있는 형식으로 해야함
   문열림: <GraphContainer content={'문열림'} />,
   냉장고열림: <GraphContainer content={'냉장고열림'} />,
 }; // state 상태에 따라 다른 컴포넌트 렌더링
 
 const HealthViewScreen = ({navigation, route}: any) => {
-  const [selectedInfo, setSelectedInfo] = useState('활동시간');
+  const [selectedInfo, setSelectedInfo] = useState('수면시간');
   const [springData, setSpringData] = useState('');
 
   return (
@@ -67,7 +67,7 @@ const HealthViewScreen = ({navigation, route}: any) => {
       <WhiteBackGround style={{height: 550}}>
         <TopButton flex={0.2} colorTheme={'#9ec9ff'} text={'행동 분석'} />
         <SelectBarView>
-          {['활동시간', '문열림', '냉장고열림'].map((item, i): any => {
+          {['수면시간', '문열림', '냉장고열림'].map((item, i): any => {
             return (
               <SelectBar
                 theme={selectedInfo == item ? '#d2c9ff' : '#9ec9ff'}
