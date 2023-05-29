@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useRef} from 'react';
 import {useState} from 'react';
-import {ScrollView, View, Text} from 'react-native';
+import {ScrollView, View, Text, Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 import {LineGraph} from './LineGraph';
 import {MainButtonBG, TopButton, ButtonText} from './MainButton';
@@ -17,9 +17,12 @@ const CountText = styled.Text`
   font-size: 20px;
   font-family: 'BMJUA';
 `;
+const SleepTime = styled.View`
+width:${Dimensions.get('window').width * 0.9}
+`
 
 export const GraphContainer = (props: {
-  content: '수면시간' | '문열림' | '냉장고열림';
+  content: '문열림' | '수면시간' | '냉장고열림';
 }) => {
   const [timeData, setTimeData] = useState<number[][]>();
   const [dailyData, setDailyData] = useState<number[][]>();
@@ -36,6 +39,7 @@ export const GraphContainer = (props: {
   const [sleepWeek, setSleepWeek] = useState<number[]>([]);
 
   const analyzedData = {
+    문열림: [doorTime, doorDay, doorWeek],
     수면시간: [
       //key
       sleepTime, //시간단위
@@ -44,7 +48,7 @@ export const GraphContainer = (props: {
 
       sleepWeek, //주단위
     ],
-    문열림: [doorTime, doorDay, doorWeek],
+    
     냉장고열림: [refriTime, refriDay, refriWeek],
   };
   const [analyzeData, setAnalyzeData] = useState(analyzedData);
@@ -160,14 +164,31 @@ export const GraphContainer = (props: {
       decelerationRate="fast"
       showsHorizontalScrollIndicator={false}>
       {['시간', '하루', '주'].map((item, i) => {
+        
         const graphData = analyzeData[props.content][i]; //현제 그래프에 해당하는 데이터값
-        const nowData = graphData[graphData.length - 1]; //현재 그래프의 평균
+        const nowData = graphData[graphData.length - 1]; //현재시간의 그래프 값
         return (
-          <View key={i}>
-            <LineGraph
+
+          
+          < View key={i} >
+            {props.content == '수면시간' && item == "시간" ? <SleepTime/>: <LineGraph
               period={item}
               content={props.content}
-              analyzeData={graphData}></LineGraph>
+              analyzeData={graphData}></LineGraph>}
+            {props.content == '수면시간' && item == "시간" ? <MainButtonBG
+              style={{
+                marginTop: 80
+              }}
+              flex={0.7}
+              theme={nowData ==0 ? '#95f88c' : '#d2c9ff'}
+              width={70}>
+              <CountText
+              style={{fontSize:30}}
+              >
+              {nowData ==0 ? '활동중' : '수면중'}
+              </CountText>
+            </MainButtonBG> :
+            <>
             <MainButtonBG flex={1} theme={'#9ec9ff'} width={70}>
               <CountText>
                 {item} 평균 {props.content} :{' '}
@@ -185,9 +206,14 @@ export const GraphContainer = (props: {
               <CountText>
                 현재 {props.content} : {nowData}
               </CountText>
-            </MainButtonBG>
+                </MainButtonBG>
+                </>
+            }
+            
           </View>
+                
         );
+        
       })}
     </ScrollViewContainer>
   );

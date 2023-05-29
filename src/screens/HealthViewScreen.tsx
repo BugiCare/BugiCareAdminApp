@@ -67,7 +67,7 @@ const HealthViewScreen = ({navigation, route}: any) => {
       <WhiteBackGround style={{height: 550}}>
         <TopButton flex={0.2} colorTheme={'#9ec9ff'} text={'행동 분석'} />
         <SelectBarView>
-          {['수면시간', '문열림', '냉장고열림'].map((item, i): any => {
+          {['문열림', '수면시간', '냉장고열림'].map((item, i): any => {
             return (
               <SelectBar
                 theme={selectedInfo == item ? '#d2c9ff' : '#9ec9ff'}
