@@ -62,27 +62,6 @@ const HealthViewScreen = ({navigation, route}: any) => {
   const [selectedInfo, setSelectedInfo] = useState('활동시간');
   const [springData, setSpringData] = useState('');
 
-  const getProfileImage = () => {
-    axios
-      .get('https://15.164.7.163')
-      .then(json => {
-        console.log(json.data);
-      })
-      .catch(error => console.log(error))
-      .then(() => console.log('it works'));
-  };
-  useEffect(() => {
-    getProfileImage();
-  });
-
-  const renderItem = ({item}: any) => {
-    return (
-      <Container>
-        <LogoImage source={item.type} width={100} resizeMode="contain" />
-      </Container>
-    );
-  };
-
   return (
     <MainView>
       <WhiteBackGround style={{height: 550}}>
@@ -99,27 +78,7 @@ const HealthViewScreen = ({navigation, route}: any) => {
               </SelectBar>
             );
           })}
-          {/* <SelectBar
-            theme={selectedInfo == 'act' ? '#d2c9ff' : '#9ec9ff'}
-            onPress={() => {
-              setSelectedInfo('act');
-            }}>
-            <SelectBarText>활동시간</SelectBarText>
-          </SelectBar>
-          <SelectBar
-            theme={selectedInfo == 'door' ? '#d2c9ff' : '#9ec9ff'}
-            onPress={() => {
-              setSelectedInfo('door');
-            }}>
-            <SelectBarText>문 열림</SelectBarText>
-          </SelectBar>
-          <SelectBar
-            theme={selectedInfo == 'refri' ? '#d2c9ff' : '#9ec9ff'}
-            onPress={() => {
-              setSelectedInfo('refri');
-            }}>
-            <SelectBarText>냉장고 열림</SelectBarText>
-          </SelectBar> */}
+          
         </SelectBarView>
         {/* <HealthScrollView data ={healthData} renderItem={renderItem}/> */}
         {lineGraph[selectedInfo]}

@@ -150,17 +150,6 @@ const HealthCheckScreen = ({navigation, route}: any) => {
             }}
           />
         </View>
-
-        {/* <AlarmTextInput
-
-  value={title}
-  onChangeText={(text) => setTitle(text)}
-  autoCapitalize="sentences"
-  autoCorrect
-  returnKeyType="next"
-  onEndEditing={() => console.log("onEndEditing")}
-  onSubmitEditing={handleSubmit}
-/> */}
       </WhiteBackGround>
       <Navbar>
         <IconButton
