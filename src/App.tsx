@@ -81,6 +81,7 @@ import MainButton, {
 import {images} from './image';
 import PillAlarm from './components/PillAlarm';
 
+
 interface PropsType {
   width: number;
 }
@@ -141,20 +142,20 @@ const HomeScreen = ({navigation, route}: any) => {
     {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
     {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
   ]);
-  const [profileImg, setProfileImg] = useState<string[]>([]);
+  const [profileImg, setProfileImg] = useState<string[]>(['']);
   const [profile, setProfile] = useState('');
   const getProfileImage = () => {
-    // [0,0,0,0,0,0,0,0,0,0].map((item, i) => {
-    //   axios
-    //   .get(`http://15.164.7.163:8080/userImage/${i+1}`, {
-    //     responseType: 'blob',
-    //   })
-    //   .then(response => {
-    //     const imageBlob = new Blob([response.data]);
-    //     const imageUrl = URL.createObjectURL(imageBlob);
-    //     setProfileImg([...profileImg,imageUrl]);
-    //   });
-    // })
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((item, i) => {
+      axios
+        .get(`http://15.164.7.163:8080/userImage/${i + 1}`, {
+          responseType: 'blob',
+        })
+        .then(response => {
+          const imageBlob = new Blob([response.data]);
+          const imageUrl = URL.createObjectURL(imageBlob);
+          setProfileImg([...profileImg, imageUrl]);
+        });
+    });
 
     axios
       .get(`http://15.164.7.163:8080/userImage/1`, {
@@ -179,7 +180,7 @@ const HomeScreen = ({navigation, route}: any) => {
     requestUserPermission();
     getInfo();
     getProfileImage();
-    console.log(profileImg[0]);
+    console.log(profileImg);
 
     // onDisplayNotification({});
   }, []);
@@ -201,11 +202,14 @@ const HomeScreen = ({navigation, route}: any) => {
             return (
               <UserList
                 flex={0.5}
-                types={{uri: profile}}
+                types={images.myInfoIcon}
                 text={user.name}
                 onPress={() => {
                   navigation.navigate('상세 정보', {user});
                 }}></UserList>
+              // <UserLists user={user}
+             
+              // ></UserLists>
             );
           })}
         </ScrollView>

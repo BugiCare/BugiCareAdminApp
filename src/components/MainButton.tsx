@@ -13,11 +13,12 @@ interface ButtonTheme {
   theme: string;
   flex: number;
 }
-const Profileimg = styled.Image`
+const ProfilePhoto = styled.Image`
   flex: 1;
   height: 130px;
   align-items: flex-start;
   width: 30%;
+  margin-right:20px;
 `;
 const UserContainer = styled(Button)`
   width: 100%;
@@ -67,7 +68,8 @@ type MainButtonType = {
 export const UserList = ({text, types, onPress}: MainButtonType) => {
   return (
     <UserContainer width={100} onPress={onPress}>
-      <LogoImage source={types} width={20} resizeMode="contain"></LogoImage>
+      {/* <LogoImage source={types} width={20} resizeMode="contain"></LogoImage> */}
+      <ProfilePhoto source={types} resizeMode = "contain"></ProfilePhoto>
       <ButtonText
         fontWeight={400}
         fontSize={25}
