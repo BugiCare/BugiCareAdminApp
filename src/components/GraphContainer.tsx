@@ -282,14 +282,14 @@ export const GraphContainer = (props: {
                   flex={1}
                   theme={
                     Math.abs(
-                      Math.floor(
+                      (Math.floor(
                         (graphData.reduce((a: number, c: number) => a + c, 0) /
                           graphData.length) *
                           10,
                       ) /
-                        10 -
+                        10) -
                         nowData,
-                    ) > 6
+                    ) < 7
                       ? '#95f88c'
                       : '#f59e33'
                   }
@@ -297,12 +297,13 @@ export const GraphContainer = (props: {
                   <CountText>
                     현재 {props.content} : {nowData}
                   </CountText>
-                  <ButtonText fontWeight={20} fontSize={20}>
-                    * 평균과 7 이상 차이나면 주황색으로 주의 표시 *
-                  </ButtonText>
-                </MainButtonBG>
-              </>
+                  
+                  </MainButtonBG>
+                  
+                </>
+                
             )}
+            
           </View>
         );
       })}

@@ -1,7 +1,7 @@
 import {LogoImage, MainView, Navbar, WhiteBackGround} from '../App';
 import React from 'react';
 
-import MainButton, {SmallButton, TopButton} from '../components/MainButton';
+import MainButton, {ButtonText, SmallButton, TopButton} from '../components/MainButton';
 import {
   Image,
   FlatList,
@@ -84,6 +84,9 @@ const HealthViewScreen = ({navigation, route}: any) => {
         {/* <HealthScrollView data ={healthData} renderItem={renderItem}/> */}
         {lineGraph[selectedInfo]}
       </WhiteBackGround>
+      <ButtonText fontWeight={200} fontSize={17}>
+                    * 평균과 7 이상 차이나면 주황색으로 <Text style={{color:'#f59e33'}}>주의</Text>  표시 *
+                  </ButtonText>
       <Navbar>
         <IconButton
           types={images.homeIcon}
