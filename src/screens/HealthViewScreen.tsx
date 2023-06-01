@@ -60,7 +60,7 @@ var lineGraph: any = {
 }; // state 상태에 따라 다른 컴포넌트 렌더링
 
 const HealthViewScreen = ({navigation, route}: any) => {
-  const [selectedInfo, setSelectedInfo] = useState('수면시간');
+  const [selectedInfo, setSelectedInfo] = useState('문열림');
   const [springData, setSpringData] = useState('');
   
   return (
