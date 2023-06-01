@@ -103,15 +103,13 @@ export const GraphContainer = (props: {
   const [analyzeData, setAnalyzeData] = useState(analyzedData);
   const getSleepTimeDay = async () => {
     await axios.get('http://15.164.7.163:8080/sleepTime/day').then(json => {
-    
-        const numberData = json.data.map((str: string) => parseInt(str));
-        const numberReverse = numberData.reverse();
+      const numberData = json.data.map((str: string) => parseInt(str));
+      const numberReverse = numberData.reverse();
 
-        console.log(json.data.reverse());
-        setSleepTime(numberReverse);
-      
+      console.log(json.data.reverse());
+      setSleepTime(numberReverse);
     });
-  }
+  };
 
   const recentData = async () => {
     await axios
@@ -228,12 +226,11 @@ export const GraphContainer = (props: {
     recentData();
     setAnalyzeData(analyzedData);
     showNoti();
-   
   }, 3000);
   useInterval(() => {
     getSleepTimeDay();
     settingSleepStack();
-  },1000)
+  }, 1000);
   return (
     <ScrollViewContainer
       horizontal
@@ -261,12 +258,11 @@ export const GraphContainer = (props: {
                   marginTop: 80,
                 }}
                 flex={0.7}
-                theme=
-                {sleepTime[0]==1 ? '#d2c9ff' : '#95f88c'}
+                theme={sleepTime[0] == 1 ? '#d2c9ff' : '#95f88c'}
                 // {sleeping ? '#d2c9ff' : '#95f88c'}
                 width={70}>
                 <CountText style={{fontSize: 30}}>
-                  {sleepTime[0]==1 ? '수면중' : '활동중'}
+                  {sleepTime[0] == 1 ? '수면중' : '활동중'}
                   {/* {sleeping ? '수면중' : '활동중'} */}
                 </CountText>
               </MainButtonBG>
@@ -284,11 +280,26 @@ export const GraphContainer = (props: {
                 </MainButtonBG>
                 <MainButtonBG
                   flex={1}
-                  theme={nowData > 7 ? '#95f88c' : '#f59e33'}
+                  theme={
+                    Math.abs(
+                      Math.floor(
+                        (graphData.reduce((a: number, c: number) => a + c, 0) /
+                          graphData.length) *
+                          10,
+                      ) /
+                        10 -
+                        nowData,
+                    ) > 6
+                      ? '#95f88c'
+                      : '#f59e33'
+                  }
                   width={70}>
                   <CountText>
                     현재 {props.content} : {nowData}
                   </CountText>
+                  <ButtonText fontWeight={20} fontSize={20}>
+                    * 평균과 7 이상 차이나면 주황색으로 주의 표시 *
+                  </ButtonText>
                 </MainButtonBG>
               </>
             )}
