@@ -120,7 +120,7 @@ const ProfileScreen = ({navigation, route}: any) => {
           <Text>{route.params.user.age}세</Text>
         </ProfileTextBox>
         <ProfileTextBox>
-          <ProfileTextKey>주민번호</ProfileTextKey>
+          <ProfileTextKey>등록ID</ProfileTextKey>
           <Text>{route.params.user.id}</Text>
         </ProfileTextBox>
         <ProfileTextBox>
@@ -157,7 +157,7 @@ const ProfileScreen = ({navigation, route}: any) => {
         <SmallButton
           flex={1}
         colorTheme={'#F1B6B6'}
-        text={'긴급 전화 연락'}
+        text={'긴급 전화'}
         types={images.phoneIcon}
           onPress={() =>
             Linking.openURL(`tel:${route.params.user.phone}`)}

@@ -30,8 +30,8 @@ async function requestUserPermission() {
 }
 
 const onDisplayNotification = async ({
-  title = '알림',
-  body = '쿵해쪄',
+  title = '긴급알림',
+  body = '쓰러짐',
 }: {
   title?: string;
   body?: string;
@@ -141,6 +141,31 @@ const HomeScreen = ({navigation, route}: any) => {
     {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
     {id: 99, name: 'example', address: 'example', age: 99, phone: 'example'},
   ]);
+  const [profileImg, setProfileImg] = useState<string[]>([]);
+  const [profile, setProfile] = useState('');
+  const getProfileImage = () => {
+    // [0,0,0,0,0,0,0,0,0,0].map((item, i) => {
+    //   axios
+    //   .get(`http://15.164.7.163:8080/userImage/${i+1}`, {
+    //     responseType: 'blob',
+    //   })
+    //   .then(response => {
+    //     const imageBlob = new Blob([response.data]);
+    //     const imageUrl = URL.createObjectURL(imageBlob);
+    //     setProfileImg([...profileImg,imageUrl]);
+    //   });
+    // })
+
+    axios
+      .get(`http://15.164.7.163:8080/userImage/1`, {
+        responseType: 'blob',
+      })
+      .then(response => {
+        const imageBlob = new Blob([response.data]);
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setProfile(imageUrl);
+      });
+  };
   const getInfo = () => {
     axios
       .get('http://15.164.7.163:8080/allUser') // 여기에 아마 서버 주소??
@@ -153,6 +178,8 @@ const HomeScreen = ({navigation, route}: any) => {
   useEffect(() => {
     requestUserPermission();
     getInfo();
+    getProfileImage();
+    console.log(profileImg[0]);
 
     // onDisplayNotification({});
   }, []);
@@ -174,7 +201,7 @@ const HomeScreen = ({navigation, route}: any) => {
             return (
               <UserList
                 flex={0.5}
-                types={images.myInfoIcon}
+                types={{uri: profile}}
                 text={user.name}
                 onPress={() => {
                   navigation.navigate('상세 정보', {user});
@@ -209,11 +236,10 @@ const App = ({navigation, route}: any) => {
     if (fallenValue) {
       axios.get('http://15.164.7.163:8080/fallen').then(json => {
         const infoData = json.data;
-        console.log(infoData);
+        // console.log(infoData);
         infoData != true ? console.log(infoData) : showNoti();
       });
       setTimeout(() => {
-      
         setFallenValue(true);
       }, 10000);
     }
@@ -252,10 +278,8 @@ const App = ({navigation, route}: any) => {
   useEffect(() => {
     setFallenValue(true);
     setTimeout(() => {
-      
       SplashScreen.hide();
     }, 1500);
-    
   }, []);
   try {
     return (

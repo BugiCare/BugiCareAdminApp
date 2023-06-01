@@ -13,6 +13,12 @@ interface ButtonTheme {
   theme: string;
   flex: number;
 }
+const Profileimg = styled.Image`
+  flex: 1;
+  height: 130px;
+  align-items: flex-start;
+  width: 30%;
+`;
 const UserContainer = styled(Button)`
   width: 100%;
   height:150px;
@@ -54,7 +60,7 @@ text-align:center;
 type MainButtonType = {
   colorTheme?: string;
   text?: string;
-  types?: ImageSourcePropType;
+  types?: ImageSourcePropType|string;
   flex: number;
   onPress?: () => void;
 };

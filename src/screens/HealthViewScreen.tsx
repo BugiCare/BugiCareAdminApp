@@ -17,7 +17,8 @@ import {useState} from 'react';
 import {useEffect} from 'react';
 import {GraphContainer} from '../components/GraphContainer';
 import axios from 'axios';
-import {NavItem} from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
+
 import IconButton from '../components/IconButton';
 
 interface healthDataType {
@@ -61,7 +62,7 @@ var lineGraph: any = {
 const HealthViewScreen = ({navigation, route}: any) => {
   const [selectedInfo, setSelectedInfo] = useState('수면시간');
   const [springData, setSpringData] = useState('');
-
+  
   return (
     <MainView>
       <WhiteBackGround style={{height: 550}}>
