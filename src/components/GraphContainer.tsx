@@ -282,12 +282,12 @@ export const GraphContainer = (props: {
                   flex={1}
                   theme={
                     Math.abs(
-                      (Math.floor(
+                      Math.floor(
                         (graphData.reduce((a: number, c: number) => a + c, 0) /
                           graphData.length) *
                           10,
                       ) /
-                        10) -
+                        10 -
                         nowData,
                     ) < 7
                       ? '#95f88c'
@@ -297,13 +297,9 @@ export const GraphContainer = (props: {
                   <CountText>
                     현재 {props.content} : {nowData}
                   </CountText>
-                  
-                  </MainButtonBG>
-                  
-                </>
-                
+                </MainButtonBG>
+              </>
             )}
-            
           </View>
         );
       })}
