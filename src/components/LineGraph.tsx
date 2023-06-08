@@ -1,9 +1,8 @@
 import React from 'react';
 import {useEffect} from 'react';
 import {useState} from 'react';
-import {Dimensions, Text, View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
-import {TopButton} from './MainButton';
 
 export const LineGraph = ({period, content, analyzeData}: any) => {
   const [label, setLabels] = useState<string[]>([]);

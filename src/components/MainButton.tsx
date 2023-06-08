@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import IconButton, {Button} from './IconButton';
 import React from 'react';
-import {ImageSourcePropType, Text} from 'react-native';
+import {ImageSourcePropType} from 'react-native';
 import {LogoImage} from '../App';
 import {images} from '../image';
 

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, {useEffect, useRef} from 'react';
 import {useState} from 'react';
-import {ScrollView, View, Text, Dimensions} from 'react-native';
+import {View, Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 import {LineGraph} from './LineGraph';
-import {MainButtonBG, TopButton, ButtonText} from './MainButton';
+import {MainButtonBG} from './MainButton';
 import notifee from '@notifee/react-native';
 
 const ScrollViewContainer = styled.ScrollView`

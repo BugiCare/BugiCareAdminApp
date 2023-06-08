@@ -1,15 +1,10 @@
 import axios from 'axios';
-import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Image, Text, View, Alert, Linking} from 'react-native';
+import {Text, View, Linking} from 'react-native';
 import styled from 'styled-components/native';
-import MainButton, {SmallButton, TopButton} from '../components/MainButton';
+import {SmallButton, TopButton} from '../components/MainButton';
 import {images} from '../image';
 import {WhiteBackGround, MainView} from '../App';
-import TimePicker from '../components/Alarm';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HealthViewScreen from './HealthViewScreen';
-import { NavbarComponent } from '../components/Navbar';
 
 import IconButton from '../components/IconButton';
 

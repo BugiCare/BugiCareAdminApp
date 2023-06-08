@@ -1,23 +1,15 @@
-import {LogoImage, MainView, Navbar, WhiteBackGround} from '../App';
+import {MainView, Navbar, WhiteBackGround} from '../App';
 import React from 'react';
 
-import MainButton, {ButtonText, SmallButton, TopButton} from '../components/MainButton';
+import {ButtonText, TopButton} from '../components/MainButton';
 import {
-  Image,
-  FlatList,
   ImageSourcePropType,
-  View,
-  SafeAreaView,
   Text,
-  Dimensions,
 } from 'react-native';
 import {images} from '../image';
 import styled from 'styled-components/native';
 import {useState} from 'react';
-import {useEffect} from 'react';
 import {GraphContainer} from '../components/GraphContainer';
-import axios from 'axios';
-import { NavItem } from 'react-bootstrap';
 
 import IconButton from '../components/IconButton';
 
