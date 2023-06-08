@@ -1,9 +1,8 @@
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import axios from 'axios';
 import React, {useEffect, useRef, useState} from 'react';
-import {Image} from 'react-bootstrap';
 import ProfileScreen from './screens/ProfileScreen';
 import LiveVideoScreen from './screens/LiveVideoScreen';
 import HealthViewScreen from './screens/HealthViewScreen';
@@ -51,35 +50,22 @@ const onDisplayNotification = async ({
 };
 
 import {
-  Button,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   useColorScheme,
-  View,
-  Linking,
-  FlatList,
 } from 'react-native';
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import styled from 'styled-components/native';
 import IconButton from './components/IconButton';
-import MainButton, {
-  SmallButton,
+import {
   TopButton,
   UserList,
 } from './components/MainButton';
 import {images} from './image';
-import PillAlarm from './components/PillAlarm';
 
 
 interface PropsType {
