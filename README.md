@@ -3,7 +3,7 @@
 > 2023 HSU Capstone AI를 활용한 어르신 돌봄 시스템 - Bugicare의 Admin App입니다.
 
 </br>
-<img width="80%" src="https://github.com/BugiCare/BugiCareAdminApp/assets/112394220/90a09a46-33db-4638-a09b-a3bf0ba006cb.gif"/>
+<img width="80%" src="[https://github.com/BugiCare/BugiCareAdminApp/assets/112394220/90a09a46-33db-4638-a09b-a3bf0ba006cb.gif](https://github.com/BugiCare/BugiCareAdminApp/issues/1#issue-1911155645)"/>
 
 ## ✔️ GUIDES
 
